@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ship_DefaultMaterial_AlbedoTransparency
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: -6465566751694194690, guid: aceed678e7de5a240a31c1c5b99d625d,
+    type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,6 +20,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseColor:
+        m_Texture: {fileID: 2800000, guid: 5073b91bec19c6a4d80328da3d5e201f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 90642e9470055b440a34ef5e868a8cf3, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -55,6 +60,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SailImage:
+        m_Texture: {fileID: 2800000, guid: d6470ccb9fb530b46b16bba9c2e785f5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SaleMask:
+        m_Texture: {fileID: 2800000, guid: 7fd28574be3a27c49bc2738a3c4c8180, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -73,5 +86,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+    - Position: {r: 0.88, g: 0.96, b: 1, a: 0}
+    - Vector2_12B08B1F: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
