@@ -51,7 +51,7 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 12
@@ -215,6 +215,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 917429c0edc06f74ebdb31b103393e4b, type: 3}
+--- !u!1 &488287194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2863697987102195172, guid: 69ab96e2f6983184fb67249140bfe926,
+    type: 3}
+  m_PrefabInstance: {fileID: 2863697987339022664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &488287199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488287194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: f6493ad4b8cc1204d9ed68fd13b68062,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Movement
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 963194227}
 --- !u!1 &609571800 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2127205045192272052, guid: 698337bc6a7dc484a8ddc2a10118e454,
@@ -383,17 +420,17 @@ PrefabInstance:
     - target: {fileID: -4327650473703933449, guid: 697a10da1613cdc478b32c390efb4671,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8537644
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -4327650473703933449, guid: 697a10da1613cdc478b32c390efb4671,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5206596
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -4327650473703933449, guid: 697a10da1613cdc478b32c390efb4671,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 117.247
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -4327650473703933449, guid: 697a10da1613cdc478b32c390efb4671,
         type: 3}
@@ -2096,6 +2133,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863697987102195174, guid: 69ab96e2f6983184fb67249140bfe926,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863697987102195174, guid: 69ab96e2f6983184fb67249140bfe926,
+        type: 3}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2863697987102195175, guid: 69ab96e2f6983184fb67249140bfe926,
         type: 3}
