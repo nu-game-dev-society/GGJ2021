@@ -72,11 +72,11 @@ public class Ship : MonoBehaviour
         Vector3 newPos = ShipTargetPositionLocator.GetShipTargetPosition(index + 1);
 
         Transform t = new GameObject().transform;
-        t.parent = transform;
+        t.parent = myFleet.transform;
         t.localPosition = newPos;
         controller.target = t;
 
-        transform.position = transform.TransformPoint(newPos);
+        transform.position = myFleet.transform.TransformPoint(newPos);
 
         animator.SetBool("IsDead", false);
     }

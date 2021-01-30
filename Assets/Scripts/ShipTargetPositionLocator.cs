@@ -6,6 +6,7 @@ using UnityEngine;
 public static class ShipTargetPositionLocator
 { 
     static float GAPSIZE = 10f;
+    static float ZOFFSET = 13f;
 
     /// <summary>
     /// Gets the target position of the ship at the provided <paramref name="index"/>
@@ -35,7 +36,7 @@ public static class ShipTargetPositionLocator
         {
             x = (posInRow - row * 0.5f) * GAPSIZE,
             y = 0,
-            z = row * GAPSIZE * Mathf.Sin(Mathf.PI / 3f) * -1f
+            z = (row * GAPSIZE * -1f) + ZOFFSET //* Mathf.Sin(Mathf.PI / 3f) 
         };
     }
 }
