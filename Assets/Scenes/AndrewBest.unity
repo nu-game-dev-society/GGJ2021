@@ -678,6 +678,8 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987221708348}
   controller: {fileID: 2863697988737705691}
+  leftCannons: {fileID: 0}
+  rightCannons: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &208114941
 GameObject:
@@ -2368,6 +2370,8 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987454333678}
   controller: {fileID: 2863697988102425097}
+  leftCannons: {fileID: 0}
+  rightCannons: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &626159330 stripped
 GameObject:
@@ -3991,6 +3995,8 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987639929647}
   controller: {fileID: 2863697988350940104}
+  leftCannons: {fileID: 0}
+  rightCannons: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &1137442271 stripped
 GameObject:
@@ -4477,6 +4483,8 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987063435746}
   controller: {fileID: 2863697988491225349}
+  leftCannons: {fileID: 0}
+  rightCannons: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &1526999357
 GameObject:
@@ -4927,6 +4935,8 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697988556996597}
   controller: {fileID: 2863697987033319186}
+  leftCannons: {fileID: 0}
+  rightCannons: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &1778384895
 GameObject:

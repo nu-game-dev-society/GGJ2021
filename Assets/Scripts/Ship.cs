@@ -14,6 +14,8 @@ public class Ship : MonoBehaviour
     public Animator animator;
     [HideInInspector] public ShipController controller;
 
+    public ParticleSystem leftCannons;
+    public ParticleSystem rightCannons;
     private float cooldown;
     public event System.Action OnDie;
 
@@ -41,7 +43,7 @@ public class Ship : MonoBehaviour
 
     public void Die()
     {
-        animator.SetBool("IsDead", true);
+        animator.SetTrigger("ShipSink");
         LeaveFleet();
         OnDie.Invoke();
     }
@@ -97,10 +99,10 @@ public class Ship : MonoBehaviour
 
         transform.position = myFleet.transform.TransformPoint(newPos);
 
-        animator.SetBool("IsDead", false);
+        animator.SetTrigger("ShipSpawn");
     }
 
-    void Attack(Ship target)
+    void Attack(Ship target, bool attackLeftSided)
     {
         if (cooldown <= 0)
         {
@@ -108,6 +110,16 @@ public class Ship : MonoBehaviour
             // Do damage to other ship
             target.TakeDamage(strength, this);
             cooldown = 5;
+            if (attackLeftSided)
+            {
+                animator.SetTrigger("LeftFire");
+                leftCannons.Play();
+            }
+            else
+            {
+                animator.SetTrigger("RightFire");
+                rightCannons.Play();
+            }
         }
     }
 
@@ -128,20 +140,21 @@ public class Ship : MonoBehaviour
         {
             Ship target = null;
             float distance = 1000.0f;
+            float angle = 0;
             for (int i = 0; i < myFleet.targetFleets.Count; i++)
             {
                 foreach (Ship s in myFleet.targetFleets[i].ships)
                 {
                     if (Vector3.Distance(transform.position, s.transform.position) < distance)
                     {
-                        float angle = Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized);
+                        angle = Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized);
                         if (Mathf.Abs(angle) > 0.2)
                             target = s;
                     }
                 }
             }
             if (target != null)
-                Attack(target);
+                Attack(target, angle < 0);
         }
     }
 
