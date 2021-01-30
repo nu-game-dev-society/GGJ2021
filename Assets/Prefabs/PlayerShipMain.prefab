@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2863697987102195174}
   - component: {fileID: 905093937}
   - component: {fileID: 488287199}
+  - component: {fileID: 2863697987339022666}
+  - component: {fileID: 2863697987339022667}
   m_Layer: 0
   m_Name: PlayerShipMain
   m_TagString: Untagged
@@ -80,7 +82,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2863697987102195172}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 17
   avoidancePriority: 50
@@ -142,6 +144,42 @@ MonoBehaviour:
   m_DefaultActionMap: Movement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2863697987339022666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863697987102195172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c44ea1d86c7024d96092b9ed37a673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  strength: 2
+  position: {x: 0, y: 0, z: 0}
+  attacking: 0
+  myFleet: {fileID: 2863697987339022667}
+  animator: {fileID: 2863697988890772736}
+  controller: {fileID: 2863697987102195175}
+  target: {fileID: 0}
+  toJoinEditorTest: {fileID: 0}
+--- !u!114 &2863697987339022667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863697987102195172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef86ecbd4920ff45b8b7a98f7ca0c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colour: 0
+  ships: []
+  center: {x: 0, y: 0, z: 0}
 --- !u!1 &2863697988890772751
 GameObject:
   m_ObjectHideFlags: 0
