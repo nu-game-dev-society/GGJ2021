@@ -14,6 +14,8 @@ public class Waves : MonoBehaviour
     public MeshFilter meshFilter;
     public Mesh mesh;
 
+    public Transform playerMain;
+
     private void Start()
     {
         mesh = new Mesh();
@@ -29,7 +31,8 @@ public class Waves : MonoBehaviour
 
     void Update()
     {
-       
+        transform.position = playerMain.position;
+
         if (baseHeight == null)
             baseHeight = mesh.vertices;
 
