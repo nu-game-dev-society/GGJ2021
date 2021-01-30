@@ -23,6 +23,7 @@ public class ShipController : MonoBehaviour
             agent.speed = Mathf.Lerp(agent.speed, 0, Time.deltaTime * accelerationSpeed);
         }
     }
+
     private void OnDrawGizmos()
     {
         if (target != null)
