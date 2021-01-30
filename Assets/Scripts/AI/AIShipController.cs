@@ -6,13 +6,17 @@ using UnityEngine.AI;
 [RequireComponent(typeof(ShipController))]
 public class AIShipController : MonoBehaviour
 {
-    float walkRadius = 50f;
+    float walkRadius = 100f;
     ShipController ShipController;
 
     // Start is called before the first frame update
     void Start()
     {
         ShipController = GetComponent<ShipController>();
+        if(ShipController.target == null)
+        {
+            ShipController.target = Instantiate(new GameObject()).transform;
+        }
     }
 
     // Update is called once per frame
@@ -26,10 +30,10 @@ public class AIShipController : MonoBehaviour
 
     Vector3 GetRandomPointInNavMesh()
     {
-        Vector3 randomDirection = Random.onUnitSphere * walkRadius;
+        Vector3 randomDirection = Random.insideUnitCircle.normalized * walkRadius;
         randomDirection += transform.position;
-        NavMeshHit hit;
-        NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
+
+        NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, walkRadius, 1);
         return hit.position;
     }
 }

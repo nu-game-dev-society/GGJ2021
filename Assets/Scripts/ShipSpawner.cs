@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using UnityEditor;
 
 [RequireComponent(typeof(BoxCollider))]
 public class ShipSpawner : MonoBehaviour
@@ -30,44 +32,27 @@ public class ShipSpawner : MonoBehaviour
     }
 
     void SpawnShip()
-	{
+    {
         if (shipCount >= maxShipCount)
-		{
-            return;
-        }
-
-        bool validSpawn = false;
-        int checkCount = 0;
-        Vector3 targetPos = Vector3.zero;
-
-        while (!validSpawn && checkCount < 5)
         {
-            int x = Mathf.RoundToInt(Random.Range(boxCollider.bounds.min.x, boxCollider.bounds.max.x));
-            int z = Mathf.RoundToInt(Random.Range(boxCollider.bounds.min.z, boxCollider.bounds.max.z));
-
-            targetPos = new Vector3(x, transform.position.y, z);
-
-            bool foundShip = false;
-            foreach (Collider collider in Physics.OverlapSphere(targetPos, shipCheckSize))
-            {
-                if (collider != boxCollider && true /* check for ship component here */)
-                {
-                    foundShip = true;
-                }
-            }
-
-            if (!foundShip)
-            {
-                validSpawn = true;
-            }
-
-            checkCount++;
+            return;
         }
 
-        if (!validSpawn)
-		{
+        Vector3 targetPos = Vector3.zero;
+        
+        int x = Mathf.RoundToInt(Random.Range(boxCollider.bounds.min.x, boxCollider.bounds.max.x));
+        int z = Mathf.RoundToInt(Random.Range(boxCollider.bounds.min.z, boxCollider.bounds.max.z));
+
+        targetPos = new Vector3(x, transform.position.y, z);
+
+        List<Collider> collisions = Physics.OverlapSphere(targetPos, shipCheckSize).ToList();
+        
+        bool isOverlappingShip = collisions.Exists(collider => collider is CapsuleCollider
+                                                && collider.gameObject.TryGetComponent<ShipController>(out _));
+        if (isOverlappingShip)
+        {
             return;
-		}
+        }
 
         GameObject ship = GameObject.Instantiate(shipPrefab);
         ship.transform.position = targetPos;
