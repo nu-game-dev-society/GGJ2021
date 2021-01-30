@@ -14,11 +14,9 @@ public class ShipFactory : MonoBehaviour
 
     public List<GameObject> ships = new List<GameObject>();
 
-    Rigidbody Rigidbody;
     // Start is called before the first frame update
     void Start()
     {
-        this.Rigidbody = this.GetComponent<Rigidbody>();
         playerShip.transform.localPosition = ShipTargetPositionLocator.GetShipTargetPosition(1, 1);
         ships.Add(playerShip);
     }
