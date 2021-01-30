@@ -47,7 +47,7 @@ public class Waves : MonoBehaviour
         mesh.vertices = vertices;
         mesh.RecalculateNormals();
    
-        GetComponent<MeshCollider>().sharedMesh = mesh;
+        //GetComponent<MeshCollider>().sharedMesh = mesh;
     }
 
     public float  GetHeightAtPosition(Vector3 vertex)
