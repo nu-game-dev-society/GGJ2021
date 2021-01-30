@@ -9,6 +9,11 @@ public class ShipFollowWaves : MonoBehaviour
     public Transform boatBase;
     public LayerMask layerMask;
 
+    public void Start()
+    {
+        waveMesh = Waves.instance;
+    }
+
     private void Update()
     {
         GetHeight();
