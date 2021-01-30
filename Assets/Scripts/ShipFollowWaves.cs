@@ -6,7 +6,6 @@ public class ShipFollowWaves : MonoBehaviour
 {
     public Waves waveMesh;
 
-    public Transform raycastPoint;
     public Transform boatBase;
     public LayerMask layerMask;
 
@@ -18,8 +17,10 @@ public class ShipFollowWaves : MonoBehaviour
     public void GetHeight()
     {
         RaycastHit hit;
-       
-        if (Physics.Raycast(raycastPoint.position, Vector3.down, out hit, 100, layerMask))
+
+        Vector3 raycastPoint = transform.position + Vector3.up;
+
+        if (Physics.Raycast(raycastPoint, Vector3.down, out hit, 100, layerMask))
         {
             Vector3 pos = boatBase.transform.position;
             pos.y = hit.point.y;
