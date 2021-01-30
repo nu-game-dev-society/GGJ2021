@@ -3368,7 +3368,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.16836025, y: 0.7907856, z: -0.24948151, w: 0.532984}
-  m_LocalPosition: {x: -52.37, y: 41.82, z: 33.34}
+  m_LocalPosition: {x: -17.33, y: 14.2, z: 17.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 724388497}
@@ -3419,7 +3419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 905093936}
-  damping: 0.8
+  damping: 2
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3695,7 +3695,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040284763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -11, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5668,6 +5668,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RowBoat
       objectReference: {fileID: 0}
+    - target: {fileID: 810874031696514942, guid: 3925ad681ebef544e8ee1b50aa135f1e,
+        type: 3}
+      propertyPath: waveMesh
+      value: 
+      objectReference: {fileID: 927778992}
     - target: {fileID: 921677577952290328, guid: 3925ad681ebef544e8ee1b50aa135f1e,
         type: 3}
       propertyPath: m_RootOrder
@@ -5865,7 +5870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952728e2e70f35a40b48d227c8ab9c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveMesh: {fileID: 0}
+  waveMesh: {fileID: 927778992}
   boatBase: {fileID: 2863697988556996596}
   layerMask:
     serializedVersion: 2
@@ -6195,6 +6200,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2863697987102195192, guid: 69ab96e2f6983184fb67249140bfe926,
+        type: 3}
+      propertyPath: waveMesh
+      value: 
+      objectReference: {fileID: 927778992}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69ab96e2f6983184fb67249140bfe926, type: 3}
 --- !u!114 &2863697987339022667 stripped
@@ -6605,7 +6615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952728e2e70f35a40b48d227c8ab9c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveMesh: {fileID: 0}
+  waveMesh: {fileID: 927778992}
   boatBase: {fileID: 2863697987454333679}
   layerMask:
     serializedVersion: 2
@@ -6697,7 +6707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952728e2e70f35a40b48d227c8ab9c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveMesh: {fileID: 0}
+  waveMesh: {fileID: 927778992}
   boatBase: {fileID: 2863697987639929646}
   layerMask:
     serializedVersion: 2
@@ -6789,7 +6799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952728e2e70f35a40b48d227c8ab9c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveMesh: {fileID: 0}
+  waveMesh: {fileID: 927778992}
   boatBase: {fileID: 2863697987063435747}
   layerMask:
     serializedVersion: 2
@@ -6857,7 +6867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952728e2e70f35a40b48d227c8ab9c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveMesh: {fileID: 0}
+  waveMesh: {fileID: 927778992}
   boatBase: {fileID: 2863697987221708349}
   layerMask:
     serializedVersion: 2
