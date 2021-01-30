@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &571386021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 571386022}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &571386022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571386021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1643401664195654158}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &294795885852011170
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1643401664195654158}
   - component: {fileID: 4133905956077702368}
+  - component: {fileID: 2025935134}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -110,6 +141,7 @@ Transform:
   - {fileID: 6181142493857069385}
   - {fileID: 8662777718479531744}
   - {fileID: 5600194909936657491}
+  - {fileID: 571386022}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -127,6 +159,23 @@ CapsuleCollider:
   m_Height: 6.739879
   m_Direction: 2
   m_Center: {x: 0, y: 0.57952666, z: -0.1446302}
+--- !u!114 &2025935134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127205045192272052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952728e2e70f35a40b48d227c8ab9c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveMesh: {fileID: 0}
+  raycastPoint: {fileID: 571386022}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 16
 --- !u!1 &2757460512046092509
 GameObject:
   m_ObjectHideFlags: 0
