@@ -8,25 +8,32 @@ public class CameraController : MonoBehaviour
     public float damping;
     Vector3 offset;
     float zoomScale = 100f;
+    bool introCompleted;
+
     const float MIN_ZOOM = 10f;
     const float MAX_ZOOM = 100f;
 
+
     void Start()
     {
+        zoomScale = 10f;
         offset = transform.position - target.position;
+
+        StartCoroutine(IntroZoom());
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 point = Vector3.Lerp(transform.position, target.position + (offset.normalized *  zoomScale), Time.time * damping);
+        Vector3 point = Vector3.Lerp(transform.position, target.position + (offset.normalized *  zoomScale), Time.deltaTime * damping);
         transform.position = point;
         transform.LookAt(point);
     }
 
     void ChangeZoom(float amount)
     {
-        zoomScale = Mathf.Clamp(zoomScale + amount, MIN_ZOOM, MAX_ZOOM);
+        if(introCompleted)
+            zoomScale = Mathf.Clamp(zoomScale + amount, MIN_ZOOM, MAX_ZOOM);
     }
     void ZoomIn() => ChangeZoom(-1f);
     void ZoomOut() => ChangeZoom(1f);
@@ -42,5 +49,18 @@ public class CameraController : MonoBehaviour
         {
             ZoomIn();
         }
+    }
+
+    public IEnumerator IntroZoom()
+    {
+        yield return new WaitForSeconds(2f);
+
+        while (zoomScale < 50f)
+        {
+            zoomScale = Mathf.Lerp(zoomScale, 51f, Time.deltaTime * 3f);
+            yield return null;
+        }
+
+        introCompleted = true;
     }
 }
