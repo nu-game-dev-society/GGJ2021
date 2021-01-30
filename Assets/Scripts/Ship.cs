@@ -59,6 +59,9 @@ public class Ship : MonoBehaviour
         Die();
         myFleet = newFleet;
         StartCoroutine(RespawnAtTime(1.25f));
+        {
+            die();
+        }
     }
 
     public void Respawn()
