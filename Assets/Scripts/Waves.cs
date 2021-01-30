@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Waves : MonoBehaviour
 {
+    public static Waves instance;
+
     public float scale = 10.0f;
     public float speed = 1.0f;
     public float noiseStrength = 4.0f;
@@ -15,6 +17,14 @@ public class Waves : MonoBehaviour
     public Mesh mesh;
 
     public Transform playerMain;
+
+    public void Awake()
+    {
+        if (!instance)
+            instance = this;
+        else
+            Destroy(this);
+    }
 
     private void Start()
     {
