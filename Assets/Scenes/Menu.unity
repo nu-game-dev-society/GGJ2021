@@ -2875,7 +2875,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: baa9eb72411dbe54ba85d097cf4496e7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 521071cc39fd743e4a3cbbfb36be0699, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.074
   m_Pitch: 1
@@ -3615,7 +3615,6 @@ MonoBehaviour:
   myFleet: {fileID: 2863697987813002909}
   animator: {fileID: 2863697988408736470}
   controller: {fileID: 2863697987718447665}
-  target: {fileID: 0}
   toJoinEditorTest: {fileID: 0}
 --- !u!114 &2863697987813002909
 MonoBehaviour:
@@ -3629,9 +3628,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef86ecbd4920ff45b8b7a98f7ca0c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  liveShipsCount: 0
   colour: 0
   ships: []
   center: {x: 0, y: 0, z: 0}
+  targetFleets: []
 --- !u!95 &2863697988408736470
 Animator:
   serializedVersion: 3
