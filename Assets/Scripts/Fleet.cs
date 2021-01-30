@@ -6,7 +6,7 @@ public class Fleet : MonoBehaviour
 {
     public enum fleetColour { red, blue, green };
     public fleetColour colour;
-    public List<Ship> ships;
+    public List<Ship> ships; //maybe hashset optimise
     public Vector3 center;
 
     private Fleet targetFleet;
