@@ -8,20 +8,14 @@ public class Ship : MonoBehaviour
 
     public float strength;
     public Vector3 position;
-<<<<<<< HEAD
     public bool attacking;
     [Tooltip("Fine if null")]
     public Fleet myFleet;
     public Animator animator;
     [HideInInspector] public ShipController controller;
 
-    private int cooldown;
-
-=======
-
     private float cooldown;
     public event System.Action onDie;
->>>>>>> 2370a0f2a4c151db1cb4653680d64c4bccbe4089
 
     public Ship()
     {
@@ -35,7 +29,6 @@ public class Ship : MonoBehaviour
     {
         health -= damage;
         if (health <= 0)
-<<<<<<< HEAD
             Die();
     }
     public void takeDamage(float damage, Ship damageSource)
@@ -66,11 +59,6 @@ public class Ship : MonoBehaviour
         Die();
         myFleet = newFleet;
         StartCoroutine(RespawnAtTime(1.25f));
-=======
-        {
-            die();
-        }
->>>>>>> 2370a0f2a4c151db1cb4653680d64c4bccbe4089
     }
 
     public void Respawn()
@@ -96,14 +84,12 @@ public class Ship : MonoBehaviour
         if (cooldown <= 0)
         {
             // Do damage to other ship
-<<<<<<< HEAD
             target.takeDamage(strength, this);
             attacking = true;
             cooldown = 100;
-=======
             target.takeDamage(strength);
             cooldown = 5;
->>>>>>> 2370a0f2a4c151db1cb4653680d64c4bccbe4089
+
         }
     }
 
