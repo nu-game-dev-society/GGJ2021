@@ -16,27 +16,44 @@ public class ShipFollowWaves : MonoBehaviour
 
     public void GetHeight()
     {
-        RaycastHit hit;
+        //RaycastHit hit;
 
-        Vector3 raycastPoint = transform.position + Vector3.up;
+        //Vector3 raycastPoint = transform.position + Vector3.up;
 
-        if (Physics.Raycast(raycastPoint, Vector3.down, out hit, 100, layerMask))
-        {
-            Vector3 pos = boatBase.transform.position;
-            pos.y = hit.point.y;
+        //if (Physics.Raycast(raycastPoint, Vector3.down, out hit, 100, layerMask))
+        //{
+        //    Vector3 pos = boatBase.transform.position;
+        //    pos.y = hit.point.y;
 
-            boatBase.transform.position = pos;
+        //    boatBase.transform.position = pos;
 
-            Quaternion newRot = Quaternion.FromToRotation(Vector3.up, hit.normal);
+        //    Quaternion newRot = Quaternion.FromToRotation(Vector3.up, hit.normal);
 
-            boatBase.transform.rotation = Quaternion.Lerp(boatBase.transform.rotation, newRot, 1 * Time.deltaTime);
+        //    boatBase.transform.rotation = Quaternion.Lerp(boatBase.transform.rotation, newRot, 1 * Time.deltaTime);
 
-            Vector3 vectorRot = boatBase.transform.localEulerAngles;
-            vectorRot.y = 0f;
-            vectorRot.x = Mathf.Clamp(newRot.x, -3f, 3f);
-            vectorRot.z = Mathf.Clamp(newRot.z, -3f, 3f);
+        //    Vector3 vectorRot = boatBase.transform.localEulerAngles;
+        //    vectorRot.y = 0f;
+        //    vectorRot.x = Mathf.Clamp(newRot.x, -3f, 3f);
+        //    vectorRot.z = Mathf.Clamp(newRot.z, -3f, 3f);
 
-            boatBase.transform.localEulerAngles = vectorRot; 
-        }
+        //    boatBase.transform.localEulerAngles = vectorRot; 
+        //}
+
+        Vector3 pos = boatBase.transform.position;
+
+
+        float frontPos = waveMesh.GetHeightAtPosition(transform.position + transform.forward);
+        float backPos = waveMesh.GetHeightAtPosition(transform.position - transform.forward);
+        float leftPos = waveMesh.GetHeightAtPosition(transform.position - transform.right);
+        float rightPos = waveMesh.GetHeightAtPosition(transform.position + transform.right);
+
+        float position = frontPos + backPos + leftPos + rightPos + waveMesh.GetHeightAtPosition(transform.position);
+        position = position / 5f;
+
+        pos.y = position;
+
+        pos = transform.InverseTransformPoint(pos);
+
+        boatBase.transform.localPosition = pos;
     }
 }
