@@ -45,6 +45,8 @@ public static class TriangleNumbers
     /// <returns></returns>
     public static int GetTriangleNumber(int n) => n * (n + 1) / 2;
 
+    public static int GetCountInRow(int n) => GetTriangleNumber(n) - GetTriangleNumber(n - 1);
+
     /// <summary>
     /// Gets the row and position of the item in the triangle at the provided <paramref name="index"/>
     /// </summary>

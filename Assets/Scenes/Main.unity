@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 8a9874bcd89ab864db5d4a0720a84095, type: 2}
+--- !u!4 &1334529 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2863697988936221517, guid: 69ab96e2f6983184fb67249140bfe926,
+    type: 3}
+  m_PrefabInstance: {fileID: 2863697987339022664}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &17910727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1643401664195654158, guid: 698337bc6a7dc484a8ddc2a10118e454,
@@ -678,7 +684,6 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987221708348}
   controller: {fileID: 2863697988737705691}
-  target: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &208114941
 GameObject:
@@ -2230,7 +2235,7 @@ MonoBehaviour:
   maxShipCount: 10
   shipPrefab: {fileID: 1094348793917431488, guid: 2bc97c3a85550b9439516569608d49e3,
     type: 3}
-  shipCheckSize: 5
+  shipCheckSize: 4.5
   spawnEvery: 5
 --- !u!65 &560669487
 BoxCollider:
@@ -2243,7 +2248,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1000, y: 1, z: 1000}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &560669488
 Transform:
@@ -2357,7 +2362,6 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987454333678}
   controller: {fileID: 2863697988102425097}
-  target: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &626159330 stripped
 GameObject:
@@ -3833,7 +3837,6 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987639929647}
   controller: {fileID: 2863697988350940104}
-  target: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &1137442271 stripped
 GameObject:
@@ -4246,7 +4249,6 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987063435746}
   controller: {fileID: 2863697988491225349}
-  target: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &1526999357
 GameObject:
@@ -4697,7 +4699,6 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697988556996597}
   controller: {fileID: 2863697987033319186}
-  target: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &1778384895
 GameObject:
@@ -6262,6 +6263,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2863697987102195175, guid: 69ab96e2f6983184fb67249140bfe926,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1334529}
     - target: {fileID: 2863697987102195192, guid: 69ab96e2f6983184fb67249140bfe926,
         type: 3}
       propertyPath: waveMesh
