@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem;
 
 //[RequireComponent(typeof(Rigidbody))]
 public class ShipController : MonoBehaviour
@@ -54,12 +53,7 @@ public class ShipController : MonoBehaviour
     //    rb.velocity = transform.forward * speed;
     //}
 
-
-    //private void OnDrawGizmos()
-    //{
-    //    if (target != null)
-    //        Gizmos.DrawWireSphere(target.position, 2.0f);
-    //}
+    public IntVariable playerShips;
 
     public Transform target;
     public NavMeshAgent agent;
@@ -67,9 +61,11 @@ public class ShipController : MonoBehaviour
 
     private void Update()
     {
-       
             agent.destination = target.position;
-
     }
-
+    private void OnDrawGizmos()
+    {
+        if (target != null)
+            Gizmos.DrawWireSphere(target.position, 2.0f);
+    }
 }
