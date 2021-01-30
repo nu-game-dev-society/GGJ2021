@@ -15,7 +15,7 @@ public class Ship : MonoBehaviour
     [HideInInspector] public ShipController controller;
 
     private float cooldown;
-    public event System.Action onDie;
+    public event System.Action OnDie;
 
     public Ship()
     {
@@ -43,7 +43,7 @@ public class Ship : MonoBehaviour
     {
         animator.SetBool("IsDead", true);
         LeaveFleet();
-        onDie.Invoke();
+        OnDie.Invoke();
     }
 
 #if UNITY_EDITOR
@@ -134,7 +134,8 @@ public class Ship : MonoBehaviour
                 {
                     if (Vector3.Distance(transform.position, s.transform.position) < distance)
                     {
-                        if (Mathf.Abs(Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized)) > 0.2)
+                        float angle = Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized);
+                        if (Mathf.Abs(angle) > 0.2)
                             target = s;
                     }
                 }
