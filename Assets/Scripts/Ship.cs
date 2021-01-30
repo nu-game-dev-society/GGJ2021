@@ -16,7 +16,6 @@ public class Ship : MonoBehaviour
 
     private float cooldown;
     public event System.Action onDie;
-    public Ship target;
 
     public Ship()
     {
@@ -26,14 +25,14 @@ public class Ship : MonoBehaviour
         cooldown = 5;
     }
 
-    public void takeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
             Die();
     }
 
-    public void takeDamage(float damage, Ship damageSource)
+    public void TakeDamage(float damage, Ship damageSource)
     {
         health -= damage;
         if (health <= 0)
@@ -65,7 +64,10 @@ public class Ship : MonoBehaviour
     void CreateFleet()
     {
         if (myFleet == null)
+        {
             myFleet = gameObject.AddComponent<Fleet>();
+            FleetManager.activeFleets.Add(myFleet);
+        }
         if (!myFleet.ships.Contains(this))
             myFleet.ships.Add(this);
     }
@@ -98,16 +100,13 @@ public class Ship : MonoBehaviour
         animator.SetBool("IsDead", false);
     }
 
-    void attack(Ship target)
+    void Attack(Ship target)
     {
         if (cooldown <= 0)
         {
+            Debug.Log(gameObject + " Attacked " + target.gameObject, target.gameObject);
             // Do damage to other ship
-            /*target.takeDamage(strength, this);
-            attacking = true;
-            cooldown = 100;*/
-            target.takeDamage(strength, this);
-            // TODO: Check if other ship is dead and if so pick another target
+            target.TakeDamage(strength, this);
             cooldown = 5;
         }
     }
@@ -125,9 +124,23 @@ public class Ship : MonoBehaviour
     {
         cooldown -= Time.deltaTime;
 
-        if (target != null && target.isActiveAndEnabled)
+        if (cooldown < 0 && myFleet.targetFleets.Count > 0)
         {
-            attack(target);
+            Ship target = null;
+            float distance = 1000.0f;
+            for (int i = 0; i < myFleet.targetFleets.Count; i++)
+            {
+                foreach (Ship s in myFleet.targetFleets[i].ships)
+                {
+                    if (Vector3.Distance(transform.position, s.transform.position) < distance)
+                    {
+                        if (Mathf.Abs(Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized)) > 0.2)
+                            target = s;
+                    }
+                }
+            }
+            if (target != null)
+                Attack(target);
         }
     }
 

@@ -1,19 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Fleet : MonoBehaviour
 {
+    public int liveShipsCount = 0;
     public enum fleetColour { red, blue, green };
     public fleetColour colour;
     public List<Ship> ships; //maybe hashset optimise
     public Vector3 center;
-
-    private Fleet targetFleet;
+    DetectionSystem detector;
+    public List<Fleet> targetFleets;
 
     private void Awake()
     {
         ships = new List<Ship>();
+        targetFleets = new List<Fleet>();
+        detector = GetComponentInChildren<DetectionSystem>();
         center = transform.position;
     }
 
@@ -27,12 +31,17 @@ public class Fleet : MonoBehaviour
         //ships.Remove(ship); 
         int index = ships.IndexOf(ship);
         if (index == -1) return;
-        ships[index] = null; //allows empty armada points to be found
+        {
+            ships[index] = null; //allows empty armada points to be found
+            liveShipsCount--;
+            CalculateDetection();
+        }
+
     }
 
     public int getCount()
     {
-        return ships.Count;
+        return liveShipsCount;
     }
 
     /// <summary>
@@ -55,7 +64,24 @@ public class Fleet : MonoBehaviour
             index = ships.Count;
         }
         AddShip(index, ship);
+        liveShipsCount++;
+        CalculateDetection();
         return index;
+    }
+
+    private void CalculateDetection()
+    {
+        Vector3 value = Vector3.zero;
+        for (int i = ships.Count - 1; i >= 1; i--)
+        {
+            if (ships[i] != null)
+            {
+                value.z = transform.InverseTransformPoint(ships[i].transform.position).z/2.0f;
+                break;
+            }
+
+        }
+        detector.CalculcateRadius(value);
     }
 
     void AddShip(int index, Ship ship)
@@ -71,21 +97,21 @@ public class Fleet : MonoBehaviour
             Debug.Log($"REPLACING ship at index {index}");
             ships[index] = ship;
         }
-
     }
 
-    public void setTargetFleet(Fleet fleet)
-	{
-        targetFleet = fleet;
-        UpdateShipTargets();
-	}
+    public void AddTargetFleet(Fleet fleet)
+    {
+        if (fleet != this && !targetFleets.Contains(fleet))
+        {
+            targetFleets.Add(fleet);
+        }
+    }
+    public void RemoveTargetFleet(Fleet fleet)
+    {
+        if (targetFleets.Contains(fleet))
+        {
+            targetFleets.Remove(fleet);
+        }
+    }
 
-    void UpdateShipTargets()
-	{
-        foreach (Ship ship in ships)
-		{
-            // Set ship target to random ship
-            ship.target = targetFleet.ships[Random.Range(0, targetFleet.getCount() - 1)];
-		}
-	}
 }
