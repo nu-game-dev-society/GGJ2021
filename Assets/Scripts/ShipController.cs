@@ -61,7 +61,10 @@ public class ShipController : MonoBehaviour
 
     private void Update()
     {
+        if(target)
             agent.destination = target.position;
+        else
+            agent.destination = transform.position;
     }
     private void OnDrawGizmos()
     {
