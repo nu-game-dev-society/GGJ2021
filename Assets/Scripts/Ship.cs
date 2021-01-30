@@ -8,22 +8,25 @@ public class Ship : MonoBehaviour
     
     public float strength;
     public Vector3 position;
-    public bool attacking;
 
-    private int cooldown;
+    private float cooldown;
+    public event System.Action onDie;
 
     public Ship()
     {
         health = 100;
         strength = 2;
         position = new Vector3(0, 0, 0);
-        cooldown = 100;
-        attacking = false;
+        cooldown = 5;
     }
 
     public void takeDamage(float damage)
     {
         health -= damage;
+        if (health <= 0)
+        {
+            die();
+        }
     }
 
     public void attack(Ship target)
@@ -32,9 +35,13 @@ public class Ship : MonoBehaviour
         {
             // Do damage to other ship
             target.takeDamage(strength);
-            attacking = true;
-            cooldown = 100;
+            cooldown = 5;
         }
+    }
+
+    private void die()
+    {
+        onDie();
     }
 
     // Start is called before the first frame update
@@ -46,9 +53,6 @@ public class Ship : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (attacking == true)
-        {
-            cooldown -= 1;
-        }
+        cooldown -= Time.deltaTime;
     }
 }
