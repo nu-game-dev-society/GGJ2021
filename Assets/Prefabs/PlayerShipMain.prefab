@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 2863697987102195192}
   - component: {fileID: 2863697987102195175}
   - component: {fileID: 2863697987102195174}
+  - component: {fileID: 905093937}
   m_Layer: 0
   m_Name: PlayerShipMain
   m_TagString: Untagged
@@ -205,7 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566d937c47e015448b22a0209aef6720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerShips: {fileID: 0}
+  accelerationSpeed: 0
+  maxSpeed: 0
   target: {fileID: 0}
   agent: {fileID: 2863697987102195174}
 --- !u!195 &2863697987102195174
@@ -230,6 +232,24 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &905093937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863697987102195172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ab89a57660f8f4791f9a3159037894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 2863697987102195175}
+  cursorTransform: {fileID: 0}
+  mainCamera: {fileID: 0}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 16
 --- !u!1 &2863697987357812809
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +984,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083595792178972809, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.71507156
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083595792178972809, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6990513
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083595792178972809, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00000007233689
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083595792178972809, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.00000007233916
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083595792178972809, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -88.702
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083595792178972809, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083595792178972809, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.001
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2025935134, guid: 698337bc6a7dc484a8ddc2a10118e454, type: 3}
