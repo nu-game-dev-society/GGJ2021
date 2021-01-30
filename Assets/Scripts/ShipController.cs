@@ -7,6 +7,7 @@ public class ShipController : MonoBehaviour
 {
     public float accelerationSpeed;
     public float maxSpeed;
+    public float turnSpeed;
 
     public Transform target;
     public NavMeshAgent agent;
@@ -16,11 +17,13 @@ public class ShipController : MonoBehaviour
         if (target)
         {
             agent.speed = Mathf.Lerp(agent.speed, maxSpeed, Time.deltaTime * accelerationSpeed);
+            agent.angularSpeed = Mathf.Lerp(agent.angularSpeed, turnSpeed, Time.deltaTime);
             agent.destination = target.position;
         }
         else
         {
             agent.speed = Mathf.Lerp(agent.speed, 0, Time.deltaTime * accelerationSpeed);
+            agent.angularSpeed = Mathf.Lerp(agent.angularSpeed, 0, Time.deltaTime); 
         }
     }
     private void OnDrawGizmos()

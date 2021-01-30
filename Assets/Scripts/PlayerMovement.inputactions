@@ -1,0 +1,71 @@
+{
+    "name": "PlayerMovement",
+    "maps": [
+        {
+            "name": "Movement",
+            "id": "e2120baf-a857-4b76-ae6a-404c30494bc7",
+            "actions": [
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "ff36fb48-503f-4843-b8ae-9d8f0b26120e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "Hold"
+                },
+                {
+                    "name": "MouseClick",
+                    "type": "Button",
+                    "id": "c8575446-b9d2-4b34-95b9-3165ef3a0542",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MouseRelease",
+                    "type": "Button",
+                    "id": "af767a4d-279a-4b84-90df-e4f2304e12ee",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e3a1dcda-b6ce-4b85-8c5e-b9559f88f605",
+                    "path": "<Mouse>/position",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f715312-3ad9-48ba-8ed0-c3ba2f92e60e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "333a6c63-6ee6-44f7-a08b-44954223a748",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
