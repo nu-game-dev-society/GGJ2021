@@ -70,6 +70,7 @@ MonoBehaviour:
   turnSpeed: 75
   target: {fileID: 0}
   agent: {fileID: 2863697987102195174}
+  particles: {fileID: 1328739038698707299}
 --- !u!195 &2863697987102195174
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -254,16 +255,87 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1882380241650919596, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882380241650919596, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882380241650919596, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882380241650919596, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882380241650919596, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882380241650919596, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2127205045192272052, guid: 698337bc6a7dc484a8ddc2a10118e454,
         type: 3}
       propertyPath: m_Name
       value: Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 3876833162165318280, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: scalingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3876833162165318280, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: useUnscaledTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3876833162165318280, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3876833162165318280, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3876833162165318280, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3876833162165318280, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3876833162165318280, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: -0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 698337bc6a7dc484a8ddc2a10118e454, type: 3}
 --- !u!4 &3563314044895959525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1643401664195654158, guid: 698337bc6a7dc484a8ddc2a10118e454,
+    type: 3}
+  m_PrefabInstance: {fileID: 2863697988365446123}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1328739038698707299 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3876833162165318280, guid: 698337bc6a7dc484a8ddc2a10118e454,
     type: 3}
   m_PrefabInstance: {fileID: 2863697988365446123}
   m_PrefabAsset: {fileID: 0}

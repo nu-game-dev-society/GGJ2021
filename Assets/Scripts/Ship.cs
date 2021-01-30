@@ -8,6 +8,7 @@ public class Ship : MonoBehaviour
 
     public float strength;
     public Vector3 position;
+<<<<<<< HEAD
     public bool attacking;
     [Tooltip("Fine if null")]
     public Fleet myFleet;
@@ -16,20 +17,25 @@ public class Ship : MonoBehaviour
 
     private int cooldown;
 
+=======
+
+    private float cooldown;
+    public event System.Action onDie;
+>>>>>>> 2370a0f2a4c151db1cb4653680d64c4bccbe4089
 
     public Ship()
     {
         health = 100;
         strength = 2;
         position = new Vector3(0, 0, 0);
-        cooldown = 100;
-        attacking = false;
+        cooldown = 5;
     }
 
     public void takeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
+<<<<<<< HEAD
             Die();
     }
     public void takeDamage(float damage, Ship damageSource)
@@ -60,6 +66,11 @@ public class Ship : MonoBehaviour
         Die();
         myFleet = newFleet;
         StartCoroutine(RespawnAtTime(1.25f));
+=======
+        {
+            die();
+        }
+>>>>>>> 2370a0f2a4c151db1cb4653680d64c4bccbe4089
     }
 
     public void Respawn()
@@ -85,10 +96,20 @@ public class Ship : MonoBehaviour
         if (cooldown <= 0)
         {
             // Do damage to other ship
+<<<<<<< HEAD
             target.takeDamage(strength, this);
             attacking = true;
             cooldown = 100;
+=======
+            target.takeDamage(strength);
+            cooldown = 5;
+>>>>>>> 2370a0f2a4c151db1cb4653680d64c4bccbe4089
         }
+    }
+
+    private void die()
+    {
+        onDie();
     }
 
     // Start is called before the first frame update
@@ -104,10 +125,7 @@ public class Ship : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (attacking == true)
-        {
-            cooldown -= 1;
-        }
+        cooldown -= Time.deltaTime;
     }
     IEnumerator RespawnAtTime(float timeToJoin)
     {
