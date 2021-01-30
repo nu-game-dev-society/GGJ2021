@@ -31,10 +31,12 @@ public class ShipFollowWaves : MonoBehaviour
 
             boatBase.transform.rotation = Quaternion.Lerp(boatBase.transform.rotation, newRot, 1 * Time.deltaTime);
 
-            newRot = boatBase.transform.localRotation;
-            newRot.y = 0f;
+            Vector3 vectorRot = boatBase.transform.localEulerAngles;
+            vectorRot.y = 0f;
+            vectorRot.x = Mathf.Clamp(newRot.x, -3f, 3f);
+            vectorRot.z = Mathf.Clamp(newRot.z, -3f, 3f);
 
-            boatBase.transform.localRotation = newRot; 
+            boatBase.transform.localEulerAngles = vectorRot; 
         }
     }
 }

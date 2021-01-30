@@ -12,8 +12,18 @@ public class ShipController : MonoBehaviour
     public Transform target;
     public NavMeshAgent agent;
 
+    public ParticleSystem particles;
+
     private void Update()
     {
+        if (agent.speed > 0.8f && !particles.isPlaying)
+            particles.Play();
+        else if (agent.speed < 0.8f && particles.isPlaying)
+            particles.Stop();
+
+        ParticleSystem.MainModule main = particles.main;
+        main.startRotation = Mathf.Deg2Rad * (transform.eulerAngles.y);
+ 
         if (target)
         {
             agent.speed = Mathf.Lerp(agent.speed, maxSpeed, Time.deltaTime * accelerationSpeed);

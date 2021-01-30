@@ -11,7 +11,6 @@ public class Ship : MonoBehaviour
     public bool attacking;
 
     private int cooldown;
-    
 
     public Ship()
     {
