@@ -43,7 +43,7 @@ public static class TriangleNumbers
     /// </summary>
     /// <param name="n"></param>
     /// <returns></returns>
-    static int GetTriangleNumber(int n) => n * (n + 1) / 2;
+    public static int GetTriangleNumber(int n) => n * (n + 1) / 2;
 
     /// <summary>
     /// Gets the row and position of the item in the triangle at the provided <paramref name="index"/>

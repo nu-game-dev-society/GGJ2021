@@ -29,8 +29,7 @@ public class Waves : MonoBehaviour
 
     void Update()
     {
-        
-
+       
         if (baseHeight == null)
             baseHeight = mesh.vertices;
 
