@@ -15,7 +15,7 @@ public class ShipColour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shipColour = Color.HSVToRGB(Random.Range(0f, 1f), 1f, 1f);
+        shipColour = Color.HSVToRGB(Random.Range(0f, 1f), 1f, 0.6f);
         crewMates = GetComponentsInChildren<CrewMate>();
 
         // If we didnt get a sail try to find it
