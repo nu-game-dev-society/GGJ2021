@@ -5,13 +5,17 @@ using UnityEngine;
 public class Ship : MonoBehaviour
 {
     public float health;
-    
+
     public float strength;
     public Vector3 position;
     public bool attacking;
+    [Tooltip("Fine if null")]
+    public Fleet myFleet;
+    public Animator animator;
+    [HideInInspector] public ShipController controller;
 
     private int cooldown;
-    
+
 
     public Ship()
     {
@@ -25,14 +29,63 @@ public class Ship : MonoBehaviour
     public void takeDamage(float damage)
     {
         health -= damage;
+        if (health <= 0)
+            Die();
+    }
+    public void takeDamage(float damage, Ship damageSource)
+    {
+        health -= damage;
+        if (health <= 0)
+            Die(damageSource.myFleet);
     }
 
+
+
+    public void Die()
+    {
+        animator.SetBool("IsDead", true);
+        myFleet.removeShip(this);
+    }
+#if UNITY_EDITOR
+    public Fleet toJoinEditorTest;
+
+    [ContextMenu("Die")]
+    public void DieEditor()
+    {
+        Die(toJoinEditorTest);
+    }
+#endif
+    public void Die(Fleet newFleet)
+    {
+        Die();
+        myFleet = newFleet;
+        StartCoroutine(RespawnAtTime(1.25f));
+    }
+
+    public void Respawn()
+    {
+        if (myFleet == null)
+        { Destroy(gameObject); return; }
+
+        int index = myFleet.AddShip(this);
+
+        Vector3 newPos = ShipTargetPositionLocator.GetShipTargetPosition(index + 1);
+
+        Transform t = new GameObject().transform;
+        t.parent = transform;
+        t.localPosition = newPos;
+        controller.target = t;
+
+        transform.position = transform.TransformPoint(newPos);
+
+        animator.SetBool("IsDead", false);
+    }
     public void attack(Ship target)
     {
         if (cooldown <= 0)
         {
             // Do damage to other ship
-            target.takeDamage(strength);
+            target.takeDamage(strength, this);
             attacking = true;
             cooldown = 100;
         }
@@ -41,7 +94,11 @@ public class Ship : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        controller = GetComponent<ShipController>();
+        if (myFleet == null) 
+            myFleet = gameObject.AddComponent<Fleet>();
+        if (!myFleet.ships.Contains(this))
+            myFleet.ships.Add(this);
     }
 
     // Update is called once per frame
@@ -51,5 +108,10 @@ public class Ship : MonoBehaviour
         {
             cooldown -= 1;
         }
+    }
+    IEnumerator RespawnAtTime(float timeToJoin)
+    {
+        yield return new WaitForSeconds(timeToJoin);
+        Respawn();
     }
 }
