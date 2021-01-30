@@ -18,12 +18,6 @@ public class ShipColour : MonoBehaviour
         shipColour = Color.HSVToRGB(Random.Range(0f, 1f), 1f, 0.6f);
         crewMates = GetComponentsInChildren<CrewMate>();
 
-        // If we didnt get a sail try to find it
-        if (sail == null)
-		{
-            sail = GameObject.Find("Sail");
-		}
-
         UpdateColours();
     }
 
@@ -48,8 +42,9 @@ public class ShipColour : MonoBehaviour
             if (crewMateMaterial == null)
             {
                 crewMateMaterial = new Material(crewMate.GetComponent<MeshRenderer>().material);
-                crewMateMaterial.color = shipColour;
             }
+
+            crewMateMaterial.color = shipColour;
 
             crewMate.GetComponent<MeshRenderer>().material = crewMateMaterial;
         }
