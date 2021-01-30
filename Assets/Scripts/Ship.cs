@@ -16,6 +16,7 @@ public class Ship : MonoBehaviour
 
     private float cooldown;
     public event System.Action onDie;
+    public Ship target;
 
     public Ship()
     {
@@ -31,6 +32,7 @@ public class Ship : MonoBehaviour
         if (health <= 0)
             Die();
     }
+
     public void takeDamage(float damage, Ship damageSource)
     {
         health -= damage;
@@ -38,13 +40,12 @@ public class Ship : MonoBehaviour
             Die(damageSource.myFleet);
     }
 
-
-
     public void Die()
     {
         animator.SetBool("IsDead", true);
         myFleet.removeShip(this);
     }
+
 #if UNITY_EDITOR
     public Fleet toJoinEditorTest;
 
@@ -54,6 +55,7 @@ public class Ship : MonoBehaviour
         Die(toJoinEditorTest);
     }
 #endif
+
     public void Die(Fleet newFleet)
     {
         Die();
@@ -82,17 +84,18 @@ public class Ship : MonoBehaviour
 
         animator.SetBool("IsDead", false);
     }
-    public void attack(Ship target)
+
+    void attack(Ship target)
     {
         if (cooldown <= 0)
         {
             // Do damage to other ship
-            target.takeDamage(strength, this);
+            /*target.takeDamage(strength, this);
             attacking = true;
-            cooldown = 100;
+            cooldown = 100;*/
             target.takeDamage(strength);
+            // TODO: Check if other ship is dead and if so pick another target
             cooldown = 5;
-
         }
     }
 
@@ -115,7 +118,13 @@ public class Ship : MonoBehaviour
     void Update()
     {
         cooldown -= Time.deltaTime;
+
+        if (target != null && target.isActiveAndEnabled)
+		{
+            attack(target);
+		}
     }
+
     IEnumerator RespawnAtTime(float timeToJoin)
     {
         yield return new WaitForSeconds(timeToJoin);

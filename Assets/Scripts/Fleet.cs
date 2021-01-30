@@ -9,10 +9,14 @@ public class Fleet : MonoBehaviour
     public List<Ship> ships;
     public Vector3 center;
 
+    private Fleet targetFleet;
+
     private void Awake()
     {
         ships = new List<Ship>();
+        center = transform.position;
     }
+
     public Fleet(fleetColour colour)
     {
         this.colour = colour;
@@ -53,6 +57,7 @@ public class Fleet : MonoBehaviour
         AddShip(index, ship);
         return index;
     }
+
     void AddShip(int index, Ship ship)
     {
 
@@ -69,5 +74,18 @@ public class Fleet : MonoBehaviour
 
     }
 
+    public void setTargetFleet(Fleet fleet)
+	{
+        targetFleet = fleet;
+        UpdateShipTargets();
+	}
 
+    void UpdateShipTargets()
+	{
+        foreach (Ship ship in ships)
+		{
+            // Set ship target to random ship
+            ship.target = targetFleet.ships[Random.Range(0, targetFleet.getCount() - 1)];
+		}
+	}
 }
