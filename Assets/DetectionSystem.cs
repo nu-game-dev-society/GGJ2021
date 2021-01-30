@@ -11,20 +11,49 @@ public class DetectionSystem : MonoBehaviour
     private void Start()
     {
         trigger = GetComponent<SphereCollider>();
-        myFleet = GetComponentInParent<Fleet>();
+        myFleet = GetComponentInParent<Ship>().myFleet;
     }
     private void OnTriggerEnter(Collider other)
     {
-        myFleet.AddTargetFleet(other.transform.root.GetComponent<Ship>().myFleet); //add layer check to add in collectibles etc.
+        if(myFleet == null)
+        {
+            myFleet = GetComponentInParent<Ship>().myFleet;
+            if(myFleet == null) { return; }
+        }
+
+        Fleet otherFleet = other?.transform?.root?.GetComponent<Ship>()?.myFleet;
+        if (otherFleet != null)
+        {
+            myFleet.AddTargetFleet(otherFleet); //add layer check to add in collectibles etc.
+        }
+        
     }
     private void OnTriggerExit(Collider other)
     {
-        myFleet.RemoveTargetFleet(other.transform.root.GetComponent<Ship>().myFleet);
+        if (myFleet == null)
+        {
+            myFleet = GetComponentInParent<Ship>().myFleet;
+            if (myFleet == null) { return; }
+        }
+
+        Fleet otherFleet = other?.transform?.root?.GetComponent<Ship>()?.myFleet;
+        if (otherFleet != null)
+        {
+            myFleet.RemoveTargetFleet(otherFleet); //add layer check to add in collectibles etc.
+        }
     }
 
     public void CalculcateRadius(Vector3 midpoint)
     {
         transform.localPosition = midpoint;
-        trigger.radius = transform.localPosition.z + 18;
+
+        int lastRow = TriangleNumbers.GetRowInTriangle(myFleet.ships.Count+1);
+        int lastRowStart = TriangleNumbers.GetTriangleNumber(lastRow-1)+1; 
+        int lastRowCount = TriangleNumbers.GetCountInRow(lastRow);
+        
+        float lastRowWidth = Vector3.Distance(ShipTargetPositionLocator.GetShipTargetPosition(lastRowStart + lastRowCount), 
+                                              ShipTargetPositionLocator.GetShipTargetPosition(lastRowStart));
+        trigger.radius = lastRowWidth + 18;
+        Debug.Log($"Detection Sphere radius is now: {trigger.radius}");
     }
 }

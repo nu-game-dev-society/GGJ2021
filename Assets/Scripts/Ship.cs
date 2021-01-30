@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Ship : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Ship : MonoBehaviour
     [HideInInspector] public ShipController controller;
 
     private float cooldown;
-    public event System.Action onDie;
+    public UnityEvent onDie;
 
     public Ship()
     {

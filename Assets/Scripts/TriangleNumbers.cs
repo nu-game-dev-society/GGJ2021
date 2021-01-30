@@ -45,6 +45,11 @@ public static class TriangleNumbers
     /// <returns></returns>
     public static int GetTriangleNumber(int n) => n * (n + 1) / 2;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
     public static int GetCountInRow(int n) => GetTriangleNumber(n) - GetTriangleNumber(n - 1);
 
     /// <summary>
