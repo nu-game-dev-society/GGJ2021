@@ -9,10 +9,13 @@ public class FleetManager : MonoBehaviour
 
     private Fleet[] fleets;
 
+    public static List<Fleet> activeFleets = new List<Fleet>();
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        InvokeRepeating("UpdateFleets", 0f, 1f);
+        activeFleets.AddRange(FindObjectsOfType<Fleet>());
+        //InvokeRepeating("UpdateFleets", 0f, 1f);
     }
 
     void FixedUpdate()
@@ -32,6 +35,6 @@ public class FleetManager : MonoBehaviour
 
     void UpdateFleets()
 	{
-        fleets = GameObject.FindObjectsOfType<Fleet>();
+        fleets = FindObjectsOfType<Fleet>();
 	}
 }

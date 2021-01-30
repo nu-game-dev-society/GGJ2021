@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 213.4
   m_LinearFogEnd: 407.41
-  m_AmbientSkyColor: {r: 1, g: 0.8882253, b: 0.7971698, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 1, g: 0.9909098, b: 0.9481132, a: 1}
   m_AmbientGroundColor: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
   m_AmbientIntensity: 1
@@ -221,6 +221,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 917429c0edc06f74ebdb31b103393e4b, type: 3}
+--- !u!1 &115290950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 540894244860705954, guid: 3925ad681ebef544e8ee1b50aa135f1e,
+    type: 3}
+  m_PrefabInstance: {fileID: 810874031287805722}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &115290954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115290950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c44ea1d86c7024d96092b9ed37a673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  strength: 0
+  position: {x: 0, y: 0, z: 0}
+  attacking: 0
+  myFleet: {fileID: 0}
+  animator: {fileID: 0}
+  controller: {fileID: 0}
+  target: {fileID: 0}
+  toJoinEditorTest: {fileID: 0}
 --- !u!198 &177605226 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3876833162165318280, guid: 698337bc6a7dc484a8ddc2a10118e454,
@@ -246,6 +273,7 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987221708348}
   controller: {fileID: 2863697988737705691}
+  target: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!95 &223330219 stripped
 Animator:
@@ -405,6 +433,7 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987454333678}
   controller: {fileID: 2863697988102425097}
+  target: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!4 &631347573 stripped
 Transform:
@@ -990,6 +1019,7 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987639929647}
   controller: {fileID: 2863697988350940104}
+  target: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &1147158534
 GameObject:
@@ -1052,6 +1082,7 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987063435746}
   controller: {fileID: 2863697988491225349}
+  target: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!114 &1710973797
 MonoBehaviour:
@@ -1072,6 +1103,7 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697988556996597}
   controller: {fileID: 2863697987033319186}
+  target: {fileID: 0}
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &1778384895
 GameObject:
@@ -1212,6 +1244,36 @@ ParticleSystem:
     type: 3}
   m_PrefabInstance: {fileID: 2863697987870781655}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2136217440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2136217441}
+  m_Layer: 0
+  m_Name: FleetManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2136217441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136217440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3369452, y: 0.40700597, z: -1.28397}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3294605472994301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,7 +1585,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2863697987033319185}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 3
   m_Speed: 3.5
   m_Acceleration: 17
   avoidancePriority: 50
@@ -1833,6 +1895,7 @@ MonoBehaviour:
   myFleet: {fileID: 2863697987339022667}
   animator: {fileID: 223330219}
   controller: {fileID: 2863697987339022671}
+  target: {fileID: 0}
   toJoinEditorTest: {fileID: 0}
 --- !u!114 &2863697987339022667
 MonoBehaviour:
@@ -2179,7 +2242,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2863697988102425098}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 3
   m_Speed: 3.5
   m_Acceleration: 17
   avoidancePriority: 50
@@ -2289,7 +2352,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2863697988350940107}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 3
   m_Speed: 3.5
   m_Acceleration: 17
   avoidancePriority: 50
@@ -2363,7 +2426,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2863697988491225350}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 3
   m_Speed: 3.5
   m_Acceleration: 17
   avoidancePriority: 50
@@ -2558,7 +2621,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2863697988737705688}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 3
   m_Speed: 3.5
   m_Acceleration: 17
   avoidancePriority: 50

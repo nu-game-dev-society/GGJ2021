@@ -43,12 +43,12 @@ public class Ship : MonoBehaviour
     public void Die()
     {
         animator.SetBool("IsDead", true);
-        myFleet.removeShip(this);
+        LeaveFleet();
+        onDie.Invoke();
     }
 
 #if UNITY_EDITOR
     public Fleet toJoinEditorTest;
-
     [ContextMenu("Die")]
     public void DieEditor()
     {
@@ -61,8 +61,21 @@ public class Ship : MonoBehaviour
         Die();
         myFleet = newFleet;
         StartCoroutine(RespawnAtTime(1.25f));
+    }
+    void CreateFleet()
+    {
+        if (myFleet == null)
+            myFleet = gameObject.AddComponent<Fleet>();
+        if (!myFleet.ships.Contains(this))
+            myFleet.ships.Add(this);
+    }
+    void LeaveFleet()
+    {
+        myFleet.removeShip(this);
+        if (myFleet.ships.Count <= 0)
         {
-            die();
+            FleetManager.activeFleets.Remove(myFleet);
+            Destroy(myFleet);
         }
     }
 
@@ -93,25 +106,18 @@ public class Ship : MonoBehaviour
             /*target.takeDamage(strength, this);
             attacking = true;
             cooldown = 100;*/
-            target.takeDamage(strength);
+            target.takeDamage(strength, this);
             // TODO: Check if other ship is dead and if so pick another target
             cooldown = 5;
         }
     }
 
-    private void die()
-    {
-        onDie();
-    }
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<ShipController>();
-        if (myFleet == null) 
-            myFleet = gameObject.AddComponent<Fleet>();
-        if (!myFleet.ships.Contains(this))
-            myFleet.ships.Add(this);
+        CreateFleet();
     }
 
     // Update is called once per frame
@@ -120,9 +126,9 @@ public class Ship : MonoBehaviour
         cooldown -= Time.deltaTime;
 
         if (target != null && target.isActiveAndEnabled)
-		{
+        {
             attack(target);
-		}
+        }
     }
 
     IEnumerator RespawnAtTime(float timeToJoin)
