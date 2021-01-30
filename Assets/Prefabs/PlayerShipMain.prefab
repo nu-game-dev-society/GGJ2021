@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6465816930288761457}
   - component: {fileID: 6468876608744466513}
   - component: {fileID: 587378591974516784}
+  - component: {fileID: 5044404786984191266}
   m_Layer: 0
   m_Name: CrewMate
   m_TagString: Untagged
@@ -27,12 +28,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159179087266240635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.01685, z: 0.009221}
+  m_LocalPosition: {x: 0.00516, y: -0.01685, z: 0.00922}
   m_LocalScale: {x: 0.0016131117, y: 0.0015598641, z: 0.0035866993}
   m_Children:
   - {fileID: 2133239800294813472}
   m_Father: {fileID: 8248961177802625698}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6465816930288761457
 MeshFilter:
@@ -94,6 +95,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5044404786984191266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159179087266240635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0231b24630c868b4c865e81d2053b7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {x: 0, y: 0, z: 0}
+  movementTarget: {fileID: 5192174578552957595}
+--- !u!1 &2707529519570602935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7254282255815116021}
+  m_Layer: 0
+  m_Name: CrewMate2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7254282255815116021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707529519570602935}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0058, y: -0, z: 0.0092}
+  m_LocalScale: {x: 0.0016131116, y: 0.0015598641, z: 0.0035866993}
+  m_Children: []
+  m_Father: {fileID: 8248961177802625698}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2863697987102195172
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +340,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &4225965059174760287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5192174578552957595}
+  m_Layer: 0
+  m_Name: CrewMate1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5192174578552957595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4225965059174760287}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.00548, y: -0.01685, z: 0.00922}
+  m_LocalScale: {x: 0.0016131116, y: 0.0015598641, z: 0.0035866993}
+  m_Children: []
+  m_Father: {fileID: 8248961177802625698}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5313628344393886143
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +568,7 @@ GameObject:
   - component: {fileID: 389445982554957834}
   - component: {fileID: 7248663432760785802}
   - component: {fileID: 1691056176369469501}
+  - component: {fileID: 2585866856277293340}
   m_Layer: 0
   m_Name: CrewMate (1)
   m_TagString: Untagged
@@ -513,7 +589,7 @@ Transform:
   m_Children:
   - {fileID: 5828954076456225432}
   m_Father: {fileID: 8248961177802625698}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &389445982554957834
 MeshFilter:
@@ -575,6 +651,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2585866856277293340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5649210737421033544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0231b24630c868b4c865e81d2053b7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {x: 0, y: 0, z: 0}
+  movementTarget: {fileID: 7254282255815116021}
 --- !u!1 &5666105043984344214
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +677,7 @@ GameObject:
   - component: {fileID: 1611230101364634548}
   - component: {fileID: 1128437884109918984}
   - component: {fileID: 1600308175543820911}
+  - component: {fileID: 1420581901823203996}
   m_Layer: 0
   m_Name: CrewMate (2)
   m_TagString: Untagged
@@ -607,7 +698,7 @@ Transform:
   m_Children:
   - {fileID: 3313857055283630757}
   m_Father: {fileID: 8248961177802625698}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1611230101364634548
 MeshFilter:
@@ -669,6 +760,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1420581901823203996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5666105043984344214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0231b24630c868b4c865e81d2053b7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {x: 0, y: 0, z: 0}
+  movementTarget: {fileID: 4226262060706888062}
 --- !u!1 &6369185789734001047
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,6 +867,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7167340192210571332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4226262060706888062}
+  m_Layer: 0
+  m_Name: CrewMate3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4226262060706888062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7167340192210571332}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.00232, y: 0.01563, z: 0.01522}
+  m_LocalScale: {x: 0.0016131116, y: 0.0015598641, z: 0.0035866993}
+  m_Children: []
+  m_Father: {fileID: 8248961177802625698}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2863697988365446123
 PrefabInstance:
   m_ObjectHideFlags: 0
