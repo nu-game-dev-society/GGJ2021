@@ -77,9 +77,10 @@ public class ShipFactory : MonoBehaviour
     void DeleteShip(int index)
     {
         GameObject shipToDestroy = ships[index];
+        shipToDestroy.GetComponentInChildren<Animator>().Play("ShipSink");
         ships[index] = null; // don't remove, because we need to replace it
         Debug.Log($"REMOVING ship at index {index}");
-        Destroy(shipToDestroy);
+        Destroy(shipToDestroy, 1.0f);
         UpdatePlayerShipCount();
     }
     public void DeleteShip() => DeleteShip(ships.Count - 1);

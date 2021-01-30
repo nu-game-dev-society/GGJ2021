@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,30 +7,62 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(ShipController))]
 public class PlayerSetShipTargetLocation : MonoBehaviour
 {
+    public PlayerMovement playerInput;
     public ShipController controller;
     public Transform cursorTransform;
     public Camera mainCamera;
     public LayerMask groundLayers;
+
+    bool lmbDown = false;
+    void Awake()
+    {
+        InitialiseControls();
+    }
+
+    private void InitialiseControls()
+    {
+        playerInput = new PlayerMovement();
+
+        playerInput.Movement.MouseClick.performed += MouseClick;
+        playerInput.Movement.MouseRelease.performed += MouseRelease;
+
+    }
+    void OnEnable()
+    {
+        playerInput.Enable();
+    }
+
+    void OnDisable()
+    {
+        playerInput.Disable();
+    }
     private void Start()
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
     }
-    void Update()
+
+    public void MouseClick(InputAction.CallbackContext ctx)
     {
-        if (Mouse.current.leftButton.IsPressed())
+        lmbDown = true;
+        controller.target = cursorTransform;
+    }
+    public void MouseRelease(InputAction.CallbackContext ctx)
+    {
+        controller.target = null;
+        lmbDown = false;
+    }
+    public void Update()
+    {
+        if (lmbDown)
         {
-            RaycastHit hit;
-            Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-            if (Physics.Raycast(ray, out hit, 50000.0f, groundLayers))
+            Ray ray = mainCamera.ScreenPointToRay(playerInput.Movement.MousePosition.ReadValue<Vector2>());
+            if (Physics.Raycast(ray, out RaycastHit hit, 50000.0f, groundLayers))
             {
                 cursorTransform.position = new Vector3(hit.point.x, 0, hit.point.z);
-                
+
             }
         }
-        if(Mouse.current.leftButton.wasPressedThisFrame)
-            controller.target = cursorTransform;
-        if (Mouse.current.leftButton.wasReleasedThisFrame)
-            controller.target = null;
     }
+
 }
