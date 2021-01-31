@@ -196,31 +196,38 @@ public class Ship : MonoBehaviour
         cooldown -= Time.deltaTime;
 
 
-        if (cooldown < 0 && myFleet.targetFleets.Count > 0)
+        if (myFleet != null)
         {
-            Ship target = null;
-            float distance = 1000.0f;
-            float angle = 0.0f;
-            for (int i = 0; i < myFleet.targetFleets.Count; i++)
+            if (cooldown < 0 && myFleet.targetFleets.Count > 0)
             {
-                if (myFleet.targetFleets[i] == null)
+                Ship target = null;
+                float distance = 1000.0f;
+                float angle = 0.0f;
+                for (int i = 0; i < myFleet.targetFleets.Count; i++)
                 {
-                    myFleet.targetFleets.RemoveAt(i);
-                    continue;
-                }
-                for (int j = myFleet.targetFleets[i].ships.Count > 1 ? 1 : 0; j < myFleet.targetFleets[i].ships.Count; j++)
-                {
-                    Ship s = myFleet.targetFleets[i].ships[j];
-                    if (s != null && Vector3.Distance(transform.position, s.transform.position) < distance)
+                    if (myFleet.targetFleets[i] == null)
                     {
-                        angle = Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized);
-                        if (Mathf.Abs(angle) > 0.3f)
-                            target = s;
+                        myFleet.targetFleets.RemoveAt(i);
+                        continue;
+                    }
+
+                    if (myFleet.targetFleets.Count > i)
+                    {
+                        for (int j = myFleet.targetFleets[i].ships.Count > 1 ? 1 : 0; j < myFleet.targetFleets[i].ships.Count; j++)
+                        {
+                            Ship s = myFleet.targetFleets[i].ships[j];
+                            if (s != null && Vector3.Distance(transform.position, s.transform.position) < distance)
+                            {
+                                angle = Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized);
+                                if (Mathf.Abs(angle) > 0.3f)
+                                    target = s;
+                            }
+                        }
                     }
                 }
+                if (target != null && Mathf.Abs(angle) > 0.3f)
+                    Attack(target, angle < 0);
             }
-            if (target != null && Mathf.Abs(angle) > 0.3f)
-                Attack(target, angle < 0);
         }
         if (cooldown < -8)
         {
