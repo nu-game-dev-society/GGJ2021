@@ -9857,7 +9857,7 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   myFleet: {fileID: 0}
   colour: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 778981968}
   controller: {fileID: 0}
   leftCannonParticles: {fileID: 0}
   rightCannonParticles: {fileID: 0}
@@ -10098,6 +10098,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2403076336468877500}
+  - component: {fileID: 778981968}
   m_Layer: 0
   m_Name: AnimatorRoot
   m_TagString: Untagged
@@ -10116,11 +10117,29 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5747483306602999135}
-  - {fileID: 3604893174506760629}
+  - {fileID: 1053156790397437150}
   m_Father: {fileID: 921677577952290328}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &778981968
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6496969198778451651}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b523fdb168a8b244b80e978a20c63e50, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6816932565354714134
 GameObject:
   m_ObjectHideFlags: 0
@@ -10146,11 +10165,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6816932565354714134}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalRotation: {x: -0.70517313, y: -0.0055463174, z: 0.028542392, w: 0.70843875}
+  m_LocalPosition: {x: 0, y: -0.015, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
-  m_Father: {fileID: 2403076336468877500}
+  m_Father: {fileID: 1053156790397437150}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4837636719120309698
@@ -10307,7 +10326,7 @@ GameObject:
   - component: {fileID: 132551028176639391}
   - component: {fileID: 900766262}
   m_Layer: 10
-  m_Name: Boat
+  m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10321,12 +10340,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7282129574483418366}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 5731767719577326361}
   - {fileID: 577725273}
-  m_Father: {fileID: 2403076336468877500}
+  m_Father: {fileID: 1053156790397437150}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1724525624713007897
@@ -10390,3 +10409,35 @@ CapsuleCollider:
   m_Height: 0.01896909
   m_Direction: 1
   m_Center: {x: -0.000048168236, y: -0.0021005147, z: -0.00016152879}
+--- !u!1 &9145210300071739316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1053156790397437150}
+  m_Layer: 0
+  m_Name: Ship
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1053156790397437150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145210300071739316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5747483306602999135}
+  - {fileID: 3604893174506760629}
+  m_Father: {fileID: 2403076336468877500}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
