@@ -121,12 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 8a9874bcd89ab864db5d4a0720a84095, type: 2}
---- !u!4 &1334529 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2863697988936221517, guid: 69ab96e2f6983184fb67249140bfe926,
-    type: 3}
-  m_PrefabInstance: {fileID: 2863697987339022664}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &47241206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,7 +1786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41868ee25708d574ca4e0600021a2523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 905093936}
+  activeFleets: []
+  player: {fileID: 0}
 --- !u!4 &434200620
 Transform:
   m_ObjectHideFlags: 0
@@ -6290,11 +6285,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2863697987102195175, guid: 69ab96e2f6983184fb67249140bfe926,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1334529}
     - target: {fileID: 2863697987102195192, guid: 69ab96e2f6983184fb67249140bfe926,
         type: 3}
       propertyPath: waveMesh
