@@ -183,12 +183,12 @@ public class Ship : MonoBehaviour
                     if (Vector3.Distance(transform.position, s.transform.position) < distance)
                     {
                         angle = Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized);
-                        if (Mathf.Abs(angle) > 0.2)
+                        if (Mathf.Abs(angle) > 0.3f)
                             target = s;
                     }
                 }
             }
-            if (target != null)
+            if (target != null && Mathf.Abs(angle) > 0.3f)
                 Attack(target, angle < 0);
         }
         if(cooldown < -8)
