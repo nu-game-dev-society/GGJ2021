@@ -17,8 +17,13 @@ public class PlayerSetShipTargetLocation : MonoBehaviour
     void Awake()
     {
         InitialiseControls();
+        GetComponent<Ship>().onDie.AddListener(OnDie);
     }
 
+    void OnDie()
+    {
+        enabled = false;
+    }
     private void InitialiseControls()
     {
         playerInput = new PlayerMovement();
