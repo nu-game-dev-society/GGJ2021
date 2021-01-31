@@ -1,12 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [HideInInspector]public List<Fleet> activeFleets;
     public Transform player;
+
+    public float playSpaceRadius;
+    public GameObject turnAroundWarning;
+
+    public Volume volume;
+    ColorAdjustments colorAdjustments;
 
     // Start is called before the first frame update
     void Awake()
@@ -15,7 +23,34 @@ public class GameManager : MonoBehaviour
             instance = this;
 
         activeFleets = new List<Fleet>(); 
-        activeFleets.AddRange(FindObjectsOfType<Fleet>()); 
+        activeFleets.AddRange(FindObjectsOfType<Fleet>());
+
+        ColorAdjustments tmp;
+        if (volume.profile.TryGet<ColorAdjustments>(out tmp))
+        {
+            colorAdjustments = tmp;
+        }
+    }
+
+    public void Update()
+    {
+        float playerDistance = Vector3.Distance(Vector3.zero, player.transform.position);
+
+        if (playerDistance > playSpaceRadius)
+        {
+            turnAroundWarning.SetActive(true);
+        }
+        else
+        {
+            turnAroundWarning.SetActive(false);
+        }
+
+        float perc = ((playerDistance - playSpaceRadius) / 60f);
+
+        perc = Mathf.Clamp01(perc);
+
+        if (colorAdjustments)
+            colorAdjustments.saturation.value = -100 * perc;
     }
 
     public Fleet GetNearestFleetToPosition(Vector3 pos, Fleet shipFleet)
@@ -38,6 +73,12 @@ public class GameManager : MonoBehaviour
         }
 
         return nearest;
+    }
+
+    public void OnDestroy()
+    {
+        if (colorAdjustments)
+            colorAdjustments.saturation.value = 0f;
     }
 
 }

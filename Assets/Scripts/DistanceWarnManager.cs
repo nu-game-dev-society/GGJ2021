@@ -32,7 +32,7 @@ public class DistanceWarnManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
 	{
-        Fleet targetFleet = other.transform.root.GetComponent<Fleet>();
+        Fleet targetFleet = other.transform.root.GetComponent<Ship>()?.myFleet;
         if (targetFleet != null && targetFleet.isActiveAndEnabled && targetFleet != myFleet && !warnSegments.ContainsKey(targetFleet.transform.GetInstanceID()))
 		{
             GameObject gObject = GameObject.Instantiate(warnSegment);
@@ -50,7 +50,7 @@ public class DistanceWarnManager : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-        Fleet targetFleet = other.transform.root.GetComponent<Fleet>();
+        Fleet targetFleet = other.transform.root.GetComponent<Ship>()?.myFleet;
         if (targetFleet != null && targetFleet.isActiveAndEnabled && targetFleet != myFleet)
         {
             GameObject segment;

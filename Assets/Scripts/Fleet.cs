@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Fleet : MonoBehaviour
 {
@@ -57,13 +58,17 @@ public class Fleet : MonoBehaviour
     /// <returns>the index of the ship in the Fleet's array</returns>
     public int AddShip(Ship ship)
     {
-        int index;
+        int index = -1;
         if (ships.Contains(null))
         {
-            do
+            for (int i = 0; i < ships.Count; i++)
             {
-                index = UnityEngine.Random.Range(1, ships.Count - 1);
-            } while (ships[index] != null); //maybe change
+                if (ships[i] == null)
+                    index = i; 
+            }
+
+            if (index == -1)
+                index = ships.Count;
         }
         else
         {
@@ -90,6 +95,8 @@ public class Fleet : MonoBehaviour
             //Debug.Log($"REPLACING ship at index {index}");
             ships[index] = ship;
         }
+
+        ship.colour.setShipColour(ships[0].colour.getShipColour());
     }
 
     public void AddTargetFleet(Fleet fleet)

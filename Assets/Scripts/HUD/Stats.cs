@@ -5,27 +5,20 @@ using TMPro;
 
 public class Stats : MonoBehaviour
 {
-    [SerializeField]
-    private IntVariable playerShips;
-
-    [SerializeField]
-    private IntVariable playerPlunder;
-
     private TMP_Text text;
+    private Fleet playerFleet;
 
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponent<TMP_Text>();
+        playerFleet = GameManager.instance.player.GetComponent<Fleet>();
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        string value = "";
-        value += "Yer Armarda: " + playerShips.RuntimeValue.ToString("D2");// + "\n";
-        //value += "Plunder: " + playerPlunder.RuntimeValue.ToString("D2");
-
-        text.text = value;
+        text.text = "Yer Armarda: " + playerFleet.ships.Count.ToString("D2");
     }
 }
