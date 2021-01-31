@@ -7,6 +7,7 @@ public static class ShipTargetPositionLocator
 { 
     static float GAPSIZE = 10f;
     static float ZOFFSET = 13f;
+    static float XOFFSET = -5.0f;
 
     /// <summary>
     /// Gets the target position of the ship at the provided <paramref name="index"/>
@@ -34,7 +35,7 @@ public static class ShipTargetPositionLocator
     {
         return new Vector3
         {
-            x = (posInRow - row * 0.5f) * GAPSIZE,
+            x = ((posInRow - row * 0.5f) * GAPSIZE) + XOFFSET,
             y = 0,
             z = (row * GAPSIZE * -1f) + ZOFFSET //* Mathf.Sin(Mathf.PI / 3f) 
         };
