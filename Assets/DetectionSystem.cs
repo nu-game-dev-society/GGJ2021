@@ -56,7 +56,7 @@ public class DetectionSystem : MonoBehaviour
         }
 
         Vector3 midpoint = Vector3.zero;
-        midpoint.z = ShipTargetPositionLocator.GetShipTargetPosition(indexOfLastLivingShip).z * 0.5f;
+        midpoint.z = ShipTargetPositionLocator.GetShipTargetPosition(indexOfLastLivingShip).z * 0.75f;
         transform.localPosition = midpoint;
 
         int lastRow = TriangleNumbers.GetRowInTriangle(indexOfLastLivingShip);
@@ -71,7 +71,7 @@ public class DetectionSystem : MonoBehaviour
         //Vector3 rightMost = ShipTargetPositionLocator.GetShipTargetPosition(lastRowStart + lastRowCount -1);
 
         //float lastRowWidth = Vector3.Distance(leftMost, rightMost);
-        trigger.radius = (ShipTargetPositionLocator.GAPSIZE * (lastRow+1)) /2;
+        trigger.radius = ShipTargetPositionLocator.GAPSIZE * (lastRow+1) * 0.5f;
         Debug.Log($"Detection Sphere radius is now: {trigger.radius}");
     }
 }
