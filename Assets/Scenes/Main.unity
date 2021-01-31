@@ -482,6 +482,17 @@ MonoBehaviour:
   playSpaceRadius: 450
   turnAroundWarning: {fileID: 7118738761472704376}
   volume: {fileID: 963194232}
+  possibleColours:
+  - {r: 0.6, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0.6, b: 0, a: 1}
+  - {r: 0, g: 0, b: 0.6, a: 1}
+  - {r: 0.3858825, g: 0, b: 0.6, a: 1}
+  - {r: 0.6, g: 0.6, b: 0.6, a: 1}
+  - {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  - {r: 0.6, g: 0.6, b: 0, a: 1}
+  - {r: 0.6, g: 0, b: 0.52941173, a: 1}
+  - {r: 0, g: 0.6, b: 0.6, a: 1}
+  - {r: 0.6, g: 0.3694118, b: 0, a: 1}
 --- !u!4 &434200620
 Transform:
   m_ObjectHideFlags: 0
@@ -2652,6 +2663,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RowBoat
       objectReference: {fileID: 0}
+    - target: {fileID: 810874031696514942, guid: 3925ad681ebef544e8ee1b50aa135f1e,
+        type: 3}
+      propertyPath: waveMesh
+      value: 
+      objectReference: {fileID: 927778992}
     - target: {fileID: 921677577952290328, guid: 3925ad681ebef544e8ee1b50aa135f1e,
         type: 3}
       propertyPath: m_RootOrder
