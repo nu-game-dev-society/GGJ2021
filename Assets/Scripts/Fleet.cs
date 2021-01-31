@@ -14,6 +14,8 @@ public class Fleet : MonoBehaviour
     [HideInInspector] public DetectionSystem detector;
     public List<Fleet> targetFleets;
 
+    public float totalHealth;
+
     private void Awake()
     {
         ships = new List<Ship>();
@@ -21,6 +23,20 @@ public class Fleet : MonoBehaviour
         detector = GetComponentInChildren<DetectionSystem>();
         center = transform.position;
     }
+
+    public void GetTotalHealth()
+    {
+        float h = 0;
+
+        foreach (Ship s in ships)
+        {
+            if (s)
+                h += s.health;
+        }
+
+        totalHealth = h;
+    }
+
 
     public Fleet(fleetColour colour)
     {
@@ -31,6 +47,8 @@ public class Fleet : MonoBehaviour
     {
         if (detector != null)
             center = detector.transform.position;
+
+        GetTotalHealth();
     }
 
     public void RemoveShip(Ship ship)
