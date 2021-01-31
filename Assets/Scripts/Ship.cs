@@ -49,7 +49,7 @@ public class Ship : MonoBehaviour
         }
 
         health -= damage;
-        if (health <= 0) 
+        if (health <= 0)
             Die();
     }
 
@@ -198,8 +198,9 @@ public class Ship : MonoBehaviour
                     myFleet.targetFleets.RemoveAt(i);
                     continue;
                 }
-                foreach (Ship s in myFleet.targetFleets[i].ships)
+                for (int j = myFleet.targetFleets[i].ships.Count > 1 ? 1 : 0; j < myFleet.targetFleets[i].ships.Count; j++)
                 {
+                    Ship s = myFleet.targetFleets[i].ships[j];
                     if (s != null && Vector3.Distance(transform.position, s.transform.position) < distance)
                     {
                         angle = Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized);
@@ -211,7 +212,7 @@ public class Ship : MonoBehaviour
             if (target != null && Mathf.Abs(angle) > 0.3f)
                 Attack(target, angle < 0);
         }
-        if(cooldown < -8)
+        if (cooldown < -8)
         {
             health = Mathf.Clamp(health + (Time.deltaTime * 2), 0, 100);
         }
