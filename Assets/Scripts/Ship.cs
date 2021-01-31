@@ -212,7 +212,7 @@ public class Ship : MonoBehaviour
                         continue;
                     }
 
-                    for (int j = myFleet.targetFleets[i].ships.Count > 1 ? 1 : 0; j < myFleet.targetFleets[i].ships.Count; j++)
+                    for (int j = myFleet.targetFleets[i].liveShipsCount > 1 ? 1 : 0; j < myFleet.targetFleets[i].ships.Count; j++)
                     {
                         Ship s = myFleet.targetFleets[i].ships[j];
                         if (s != null && Vector3.Distance(transform.position, s.transform.position) < distance)

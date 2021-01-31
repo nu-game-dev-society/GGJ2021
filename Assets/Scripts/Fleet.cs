@@ -37,6 +37,7 @@ public class Fleet : MonoBehaviour
     {
         //ships.Remove(ship); 
         int index = ships.IndexOf(ship);
+
         if (index == -1) return;
         {
             ships[index] = null; //allows empty armada points to be found
@@ -96,7 +97,8 @@ public class Fleet : MonoBehaviour
             ships[index] = ship;
         }
 
-        ship.colour.setShipColour(ships[0].colour.getShipColour());
+        if(ship.colour)
+            ship.colour.setShipColour(ships[0].colour.getShipColour());
     }
 
     public void AddTargetFleet(Fleet fleet)
