@@ -48,9 +48,20 @@ public class @PlayerMovement : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""e3a1dcda-b6ce-4b85-8c5e-b9559f88f605"",
                     ""path"": ""<Mouse>/position"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC;Mobile"",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c9ee5699-1a88-4cf9-8f18-0a4d5516b46c"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mobile;PC"",
                     ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -61,7 +72,18 @@ public class @PlayerMovement : IInputActionCollection, IDisposable
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC;Mobile"",
+                    ""action"": ""MouseClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""035a8486-3c48-40bf-bee4-64b68bba0679"",
+                    ""path"": ""<Touchscreen>/press"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Mobile;PC"",
                     ""action"": ""MouseClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -72,7 +94,18 @@ public class @PlayerMovement : IInputActionCollection, IDisposable
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": ""Press(behavior=1)"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC;Mobile"",
+                    ""action"": ""MouseRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c5b52a31-3059-48c2-bc39-6e307d2f2659"",
+                    ""path"": ""<Touchscreen>/press"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""Mobile;PC"",
                     ""action"": ""MouseRelease"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -80,7 +113,24 @@ public class @PlayerMovement : IInputActionCollection, IDisposable
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""PC"",
+            ""bindingGroup"": ""PC"",
+            ""devices"": []
+        },
+        {
+            ""name"": ""Mobile"",
+            ""bindingGroup"": ""Mobile"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Touchscreen>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
@@ -181,6 +231,24 @@ public class @PlayerMovement : IInputActionCollection, IDisposable
         }
     }
     public MovementActions @Movement => new MovementActions(this);
+    private int m_PCSchemeIndex = -1;
+    public InputControlScheme PCScheme
+    {
+        get
+        {
+            if (m_PCSchemeIndex == -1) m_PCSchemeIndex = asset.FindControlSchemeIndex("PC");
+            return asset.controlSchemes[m_PCSchemeIndex];
+        }
+    }
+    private int m_MobileSchemeIndex = -1;
+    public InputControlScheme MobileScheme
+    {
+        get
+        {
+            if (m_MobileSchemeIndex == -1) m_MobileSchemeIndex = asset.FindControlSchemeIndex("Mobile");
+            return asset.controlSchemes[m_MobileSchemeIndex];
+        }
+    }
     public interface IMovementActions
     {
         void OnMousePosition(InputAction.CallbackContext context);

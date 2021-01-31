@@ -27,7 +27,6 @@ public class PlayerSetShipTargetLocation : MonoBehaviour
     private void InitialiseControls()
     {
         playerInput = new PlayerMovement();
-
         playerInput.Movement.MouseClick.performed += MouseClick;
         playerInput.Movement.MouseRelease.performed += MouseRelease;
 
@@ -49,6 +48,7 @@ public class PlayerSetShipTargetLocation : MonoBehaviour
 
     public void MouseClick(InputAction.CallbackContext ctx)
     {
+        Debug.Log("Click");
         lmbDown = true;
         controller.target = cursorTransform;
     }
