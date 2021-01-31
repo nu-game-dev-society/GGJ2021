@@ -89,6 +89,11 @@ public class Ship : MonoBehaviour
     {
         Die();
         myFleet = newFleet;
+
+        AIShipController aiShip = GetComponent<AIShipController>();
+        if (aiShip)
+            aiShip.enabled = false;
+
         StartCoroutine(RespawnAtTime(1.25f));
     }
     void CreateFleet()

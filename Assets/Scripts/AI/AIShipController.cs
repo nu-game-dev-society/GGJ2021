@@ -56,7 +56,7 @@ public class AIShipController : MonoBehaviour
 
     public Fleet GetNearestFleet()
     {
-        return GameManager.instance.GetNearestFleetToPosition(ship.myFleet.center);
+        return GameManager.instance.GetNearestFleetToPosition(ship.myFleet.center, ship.myFleet);
     }
 
     Vector3 GetRandomPointInNavMesh()
@@ -67,4 +67,6 @@ public class AIShipController : MonoBehaviour
         NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, walkRadius, 1);
         return hit.position;
     }
+
+    static Vector3 GetRandomPointOnCircumference(float radius) => Random.insideUnitCircle.normalized * radius;
 }
