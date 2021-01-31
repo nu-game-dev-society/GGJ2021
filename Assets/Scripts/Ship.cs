@@ -116,6 +116,9 @@ public class Ship : MonoBehaviour
         myFleet.RemoveShip(this);
         if (myFleet.liveShipsCount <= 0)
         {
+            if (colour)
+                GameManager.instance.SetColourAvailable(colour.getShipColour());
+
             GameManager.instance.activeFleets.Remove(myFleet);
             Destroy(myFleet);
         }
