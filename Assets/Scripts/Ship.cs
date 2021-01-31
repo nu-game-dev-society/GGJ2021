@@ -92,7 +92,9 @@ public class Ship : MonoBehaviour
     {
         Die();
 
-        if (isRowBoat && newFleet.ships[0].isPlayer)
+        bool rowBoatAdd = isRowBoat && newFleet.ships[0].isPlayer;
+
+        if (!isRowBoat || rowBoatAdd)
         {
             myFleet = newFleet;
 
@@ -159,6 +161,9 @@ public class Ship : MonoBehaviour
     {
         if (strength > 0)
         {
+            if (isPlayer)
+                Debug.Log("Attack");
+
             if (cooldown <= 0)
             {
                 Debug.Log(gameObject + " Attacked " + target.gameObject, target.gameObject);
@@ -234,7 +239,7 @@ public class Ship : MonoBehaviour
                         if (s != null && Vector3.Distance(transform.position, s.transform.position) < distance)
                         {
                             angle = Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized);
-                            if (Mathf.Abs(angle) > 0.7f)
+                            if (Mathf.Abs(angle) > 0.5f)
                                 target = s;
                         }
                     }
