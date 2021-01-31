@@ -34,7 +34,7 @@ public class Fleet : MonoBehaviour
         {
             ships[index] = null; //allows empty armada points to be found
             liveShipsCount--;
-            CalculateDetection();
+            detector.CalculateRadius();
         }
 
     }
@@ -65,23 +65,13 @@ public class Fleet : MonoBehaviour
         }
         AddShip(index, ship);
         liveShipsCount++;
-        CalculateDetection();
+        detector.CalculateRadius();
         return index;
     }
 
     private void CalculateDetection()
     {
-        Vector3 value = Vector3.zero;
-        for (int i = ships.Count - 1; i >= 1; i--)
-        {
-            if (ships[i] != null)
-            {
-                value.z = transform.InverseTransformPoint(ships[i].transform.position).z/2.0f;
-                break;
-            }
-
-        }
-        detector.CalculcateRadius(value);
+        
     }
 
     void AddShip(int index, Ship ship)

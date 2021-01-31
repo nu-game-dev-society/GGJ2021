@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class ShipTargetPositionLocator
 { 
-    static float GAPSIZE = 10f;
+    public static float GAPSIZE = 10f;
     static float ZOFFSET = 13f;
 
     /// <summary>
