@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Events;
 
 public class Fleet : MonoBehaviour
 {
@@ -65,6 +66,12 @@ public class Fleet : MonoBehaviour
 
     }
 
+    public UnityEvent fleetDestroyed = new UnityEvent();
+    public void OnDestroy()
+    {
+        fleetDestroyed.Invoke();
+    }
+
     public int getCount()
     {
         return liveShipsCount;
@@ -83,7 +90,7 @@ public class Fleet : MonoBehaviour
             for (int i = 0; i < ships.Count; i++)
             {
                 if (ships[i] == null)
-                    index = i; 
+                    index = i;
             }
 
             if (index == -1)
@@ -115,7 +122,7 @@ public class Fleet : MonoBehaviour
             ships[index] = ship;
         }
 
-        if(ship.colour)
+        if (ship.colour)
             ship.colour.setShipColour(ships[0].colour.getShipColour());
     }
 

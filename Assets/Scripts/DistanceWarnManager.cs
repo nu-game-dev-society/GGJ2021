@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
@@ -16,7 +17,7 @@ public class DistanceWarnManager : MonoBehaviour
 
     private SphereCollider trigger;
     private Fleet myFleet;
-    private Dictionary<int, GameObject> warnSegments = new Dictionary<int, GameObject>();
+    private Dictionary<Fleet, GameObject> warnSegments = new Dictionary<Fleet, GameObject>();
 
     void Start()
     {
@@ -24,18 +25,18 @@ public class DistanceWarnManager : MonoBehaviour
         myFleet = GetComponentInParent<Ship>().myFleet;
     }
 
-	void FixedUpdate()
-	{
+    void FixedUpdate()
+    {
         // Update the sphere size
         trigger.radius = detectorCollider.radius + warnDistance;
     }
 
     private void OnTriggerEnter(Collider other)
-	{
+    {
         Fleet targetFleet = other.transform.root.GetComponent<Ship>()?.myFleet;
-        if (targetFleet != null && targetFleet.isActiveAndEnabled && targetFleet != myFleet && !warnSegments.ContainsKey(targetFleet.transform.GetInstanceID()))
-		{
-            GameObject gObject = GameObject.Instantiate(warnSegment);
+        if (targetFleet != null && targetFleet.isActiveAndEnabled && targetFleet != myFleet && !warnSegments.ContainsKey(targetFleet))
+        {
+            GameObject gObject = Instantiate(warnSegment);
             gObject.transform.parent = transform;
             gObject.transform.localPosition = Vector3.zero;
 
@@ -44,22 +45,35 @@ public class DistanceWarnManager : MonoBehaviour
             tracker.detectorCollider = detectorCollider;
             tracker.warnDistance = warnDistance;
 
-            warnSegments.Add(targetFleet.transform.GetInstanceID(), gObject);
+            warnSegments.Add(targetFleet, gObject);
+            targetFleet.fleetDestroyed.AddListener(RemoveFromList);
         }
-	}
+    }
 
-	private void OnTriggerExit(Collider other)
-	{
+    public void RemoveFromList()
+    {
+        List<Fleet> fleets = warnSegments.Keys.ToList();
+        foreach (Fleet f in fleets)
+        {
+            if (f == null || f.liveShipsCount == 0)
+                RemoveFleet(f);
+        }
+    }
+    void RemoveFleet(Fleet f)
+    {
+        if (warnSegments.TryGetValue(f, out GameObject segment))
+        {
+            Destroy(segment);
+            warnSegments.Remove(f);
+            f.fleetDestroyed.RemoveListener(RemoveFromList);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
         Fleet targetFleet = other.transform.root.GetComponent<Ship>()?.myFleet;
         if (targetFleet != null && targetFleet.isActiveAndEnabled && targetFleet != myFleet)
         {
-            GameObject segment;
-            if (warnSegments.TryGetValue(targetFleet.transform.GetInstanceID(), out segment))
-			{
-                Destroy(segment);
-                warnSegments.Remove(targetFleet.transform.GetInstanceID());
-            }
-            
+            RemoveFleet(targetFleet);
         }
     }
 }
