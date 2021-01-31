@@ -96,6 +96,11 @@ PrefabInstance:
       propertyPath: myFleet
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4561297282774650910, guid: 69ab96e2f6983184fb67249140bfe926,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 905093937, guid: 69ab96e2f6983184fb67249140bfe926, type: 3}
     - {fileID: 488287199, guid: 69ab96e2f6983184fb67249140bfe926, type: 3}
