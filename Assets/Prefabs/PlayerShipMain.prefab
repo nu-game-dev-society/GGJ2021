@@ -160,10 +160,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxHealth: 100
   strength: 30
   position: {x: 0, y: 0, z: 0}
-  attacking: 0
   myFleet: {fileID: 2863697987339022667}
+  colour: {fileID: 0}
   animator: {fileID: 2863697988890772736}
   controller: {fileID: 2863697987102195175}
   leftCannonParticles: {fileID: 2603063817710654234}

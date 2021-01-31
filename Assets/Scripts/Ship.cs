@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Ship : MonoBehaviour
 {
     public float health;
+    public float maxHealth;
 
     public float strength;
     public Vector3 position;
@@ -28,14 +29,6 @@ public class Ship : MonoBehaviour
     public AudioClip hitClip;
     public AnimationCurve falloff;
     public float maxDistance = 500f;
-
-    public Ship()
-    {
-        health = 100;
-        strength = 2;
-        position = new Vector3(0, 0, 0);
-        cooldown = 5;
-    }
 
     public void TakeDamage(float damage)
     {
@@ -139,7 +132,7 @@ public class Ship : MonoBehaviour
         transform.position = myFleet.transform.TransformPoint(newPos);
 
         SetAnimTrigger("ShipSpawn");
-        health = 100;
+        health = maxHealth;
     }
 
     void Attack(Ship target, bool leftFire)
@@ -230,7 +223,7 @@ public class Ship : MonoBehaviour
         }
         if (cooldown < -8)
         {
-            health = Mathf.Clamp(health + (Time.deltaTime * 2), 0, 100);
+            health = Mathf.Clamp(health + (Time.deltaTime * 2), 0, maxHealth);
         }
     }
 

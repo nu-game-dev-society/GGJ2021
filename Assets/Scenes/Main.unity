@@ -2652,6 +2652,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RowBoat
       objectReference: {fileID: 0}
+    - target: {fileID: 810874031287805725, guid: 3925ad681ebef544e8ee1b50aa135f1e,
+        type: 3}
+      propertyPath: maxHealth
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 921677577952290328, guid: 3925ad681ebef544e8ee1b50aa135f1e,
         type: 3}
       propertyPath: m_RootOrder
