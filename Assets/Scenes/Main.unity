@@ -922,6 +922,8 @@ MonoBehaviour:
   maxShipCount: 10
   shipPrefab: {fileID: 1094348793917431488, guid: 2bc97c3a85550b9439516569608d49e3,
     type: 3}
+  rowBoatPrefab: {fileID: 540894244860705954, guid: 3925ad681ebef544e8ee1b50aa135f1e,
+    type: 3}
   shipCheckSize: 4.5
   spawnEvery: 5
 --- !u!65 &560669487
