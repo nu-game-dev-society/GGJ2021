@@ -9938,7 +9938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   accelerationSpeed: 0.2
-  maxSpeed: 1
+  maxSpeed: 4
   turnSpeed: 60
   target: {fileID: 0}
   agent: {fileID: 810874031287805730}
