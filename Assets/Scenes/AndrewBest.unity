@@ -678,8 +678,11 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987221708348}
   controller: {fileID: 2863697988737705691}
-  leftCannons: {fileID: 0}
-  rightCannons: {fileID: 0}
+  leftCannonParticles: {fileID: 0}
+  rightCannonParticles: {fileID: 0}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &208114941
 GameObject:
@@ -2272,6 +2275,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: -98.698006, z: 0}
+--- !u!198 &561485141 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2603063817710654234, guid: 69ab96e2f6983184fb67249140bfe926,
+    type: 3}
+  m_PrefabInstance: {fileID: 2863697987339022664}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &598401279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,8 +2379,11 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987454333678}
   controller: {fileID: 2863697988102425097}
-  leftCannons: {fileID: 0}
-  rightCannons: {fileID: 0}
+  leftCannonParticles: {fileID: 0}
+  rightCannonParticles: {fileID: 0}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &626159330 stripped
 GameObject:
@@ -3995,8 +4007,11 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987639929647}
   controller: {fileID: 2863697988350940104}
-  leftCannons: {fileID: 0}
-  rightCannons: {fileID: 0}
+  leftCannonParticles: {fileID: 0}
+  rightCannonParticles: {fileID: 0}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &1137442271 stripped
 GameObject:
@@ -4483,8 +4498,11 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697987063435746}
   controller: {fileID: 2863697988491225349}
-  leftCannons: {fileID: 0}
-  rightCannons: {fileID: 0}
+  leftCannonParticles: {fileID: 0}
+  rightCannonParticles: {fileID: 0}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &1526999357
 GameObject:
@@ -4935,8 +4953,11 @@ MonoBehaviour:
   myFleet: {fileID: 0}
   animator: {fileID: 2863697988556996597}
   controller: {fileID: 2863697987033319186}
-  leftCannons: {fileID: 0}
-  rightCannons: {fileID: 0}
+  leftCannonParticles: {fileID: 0}
+  rightCannonParticles: {fileID: 0}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
   toJoinEditorTest: {fileID: 2863697987339022667}
 --- !u!1 &1778384895
 GameObject:
@@ -6033,6 +6054,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2863697987183789508}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &2084158320 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7809029432461110076, guid: 69ab96e2f6983184fb67249140bfe926,
+    type: 3}
+  m_PrefabInstance: {fileID: 2863697987339022664}
+  m_PrefabAsset: {fileID: 0}
 --- !u!198 &2098411893 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3876833162165318280, guid: 698337bc6a7dc484a8ddc2a10118e454,
@@ -6639,6 +6666,16 @@ PrefabInstance:
       propertyPath: waveMesh
       value: 
       objectReference: {fileID: 927778992}
+    - target: {fileID: 2863697987339022666, guid: 69ab96e2f6983184fb67249140bfe926,
+        type: 3}
+      propertyPath: leftCannonParticles
+      value: 
+      objectReference: {fileID: 561485141}
+    - target: {fileID: 2863697987339022666, guid: 69ab96e2f6983184fb67249140bfe926,
+        type: 3}
+      propertyPath: rightCannonParticles
+      value: 
+      objectReference: {fileID: 2084158320}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69ab96e2f6983184fb67249140bfe926, type: 3}
 --- !u!114 &2863697987339022667 stripped
