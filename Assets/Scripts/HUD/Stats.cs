@@ -23,8 +23,8 @@ public class Stats : MonoBehaviour
     void FixedUpdate()
     {
         string value = "";
-        value += "Yer Armarda: " + playerShips.RuntimeValue.ToString("D2") + "\n";
-        value += "Plunder: " + playerPlunder.RuntimeValue.ToString("D2");
+        value += "Yer Armarda: " + playerShips.RuntimeValue.ToString("D2");// + "\n";
+        //value += "Plunder: " + playerPlunder.RuntimeValue.ToString("D2");
 
         text.text = value;
     }

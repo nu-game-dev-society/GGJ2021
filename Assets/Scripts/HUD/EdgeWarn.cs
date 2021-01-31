@@ -39,7 +39,7 @@ public class EdgeWarn : MonoBehaviour
             float pct = Mathf.Clamp((dist - warnRadius + warnDist) / warnDist, 0f, 1f);
             warnTexture.color = new Color(warnTexture.color.r, warnTexture.color.g, warnTexture.color.b, pct);
 
-            warnTextureRot.eulerAngles = new Vector3(0, 0, Mathf.Rad2Deg * Mathf.Atan2(zDiff, xDiff) - 90f);
+            warnTextureRot.eulerAngles = new Vector3(0, 0, Mathf.Rad2Deg * Mathf.Atan2(zDiff, xDiff));
         }
         else
 		{
@@ -49,11 +49,14 @@ public class EdgeWarn : MonoBehaviour
 
     void OnDrawGizmosSelected()
 	{
-        Gizmos.color = new Color(0, 1, 0);
-
         Matrix4x4 oldMatrix = Gizmos.matrix;
         Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, new Vector3(1, 0.01f, 1));
+
+        Gizmos.color = new Color(1, 0, 0);
         Gizmos.DrawWireSphere(Vector3.zero, warnRadius);
+
+        Gizmos.color = new Color(0, 1, 0);
+        Gizmos.DrawWireSphere(Vector3.zero, warnRadius - warnDist);
         Gizmos.matrix = oldMatrix;
     }
 }
