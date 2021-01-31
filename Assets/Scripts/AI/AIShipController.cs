@@ -56,7 +56,7 @@ public class AIShipController : MonoBehaviour
 
     public Fleet GetNearestFleet()
     {
-        return GameManager.instance.GetNearestFleetToPosition(ship.myFleet.center);
+        return GameManager.instance.GetNearestFleetToPosition(ship.myFleet.center, ship.myFleet);
     }
 
     Vector3 GetRandomPointInNavMesh()

@@ -18,19 +18,22 @@ public class GameManager : MonoBehaviour
         activeFleets.AddRange(FindObjectsOfType<Fleet>());
     }
 
-    public Fleet GetNearestFleetToPosition(Vector3 pos)
+    public Fleet GetNearestFleetToPosition(Vector3 pos, Fleet shipFleet)
     {
         Fleet nearest = null;
         float closestDist = float.MaxValue;
 
         foreach (Fleet fleet in activeFleets)
         {
-            float dist = Vector3.Distance(pos, fleet.center);
-
-            if (dist < closestDist)
+            if (fleet != shipFleet)
             {
-                closestDist = dist;
-                nearest = fleet;
+                float dist = Vector3.Distance(pos, fleet.center);
+
+                if (dist < closestDist)
+                {
+                    closestDist = dist;
+                    nearest = fleet;
+                }
             }
         }
 
