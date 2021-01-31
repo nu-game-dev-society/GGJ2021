@@ -18,7 +18,7 @@ public class ShipColour : MonoBehaviour
         // try to get an unused colour, otherwise just randomise it
         // NOTE: just need to make sure we set enough colours that it never needs to randomise
         shipColour = Color.clear;
-        if (GameManager.instance.TryGetUnusedColour(out shipColour) == false)
+        if (GameManager.instance != null && GameManager.instance.TryGetUnusedColour(out shipColour) == false)
         {
             shipColour = Color.HSVToRGB(Random.Range(0f, 1f), 1f, 0.6f);
         }
@@ -28,7 +28,7 @@ public class ShipColour : MonoBehaviour
     }
 
     public Color getShipColour()
-	{
+    {
         return shipColour;
     }
 
@@ -39,7 +39,7 @@ public class ShipColour : MonoBehaviour
     }
 
     private void UpdateColours()
-	{
+    {
         MeshRenderer renderer = sail.GetComponent<MeshRenderer>();
         renderer.material.SetColor("_SailColor", shipColour);
 
