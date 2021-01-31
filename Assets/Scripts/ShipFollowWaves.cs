@@ -55,7 +55,7 @@ public class ShipFollowWaves : MonoBehaviour
         float position = frontPos + backPos + leftPos + rightPos + waveMesh.GetHeightAtPosition(transform.position);
         position = position / 5f;
 
-        pos.y = position;
+        pos.y = position + 0.7f;
 
         pos = transform.InverseTransformPoint(pos);
 

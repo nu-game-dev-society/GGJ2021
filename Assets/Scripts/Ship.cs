@@ -17,6 +17,8 @@ public class Ship : MonoBehaviour
 
     public ParticleSystem leftCannonParticles;
     public ParticleSystem rightCannonParticles;
+    public ParticleSystem hitParticles;
+
 
     private float cooldown;
     public UnityEvent onDie;
@@ -24,6 +26,8 @@ public class Ship : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip fireClip;
     public AudioClip hitClip;
+    public AnimationCurve falloff;
+    public float maxDistance = 500f;
 
     public Ship()
     {
@@ -37,13 +41,15 @@ public class Ship : MonoBehaviour
     {
         if (audioSource.clip != hitClip || !audioSource.isPlaying)
         {
+            CalculateFalloff();
             audioSource.clip = hitClip;
             audioSource.pitch = Random.Range(0.8f, 1.1f);
             audioSource.Play();
+            hitParticles.Play();
         }
 
         health -= damage;
-        if (health <= 0)
+        if (health <= 0) 
             Die();
     }
 
@@ -51,9 +57,11 @@ public class Ship : MonoBehaviour
     {
         if (audioSource.clip != hitClip || !audioSource.isPlaying)
         {
+            CalculateFalloff();
             audioSource.clip = hitClip;
             audioSource.pitch = Random.Range(0.8f, 1.1f);
             audioSource.Play();
+            hitParticles.Play();
         }
 
         health -= damage;
@@ -143,6 +151,7 @@ public class Ship : MonoBehaviour
 
             if (audioSource.clip != fireClip || !audioSource.isPlaying)
             {
+                CalculateFalloff();
                 audioSource.clip = fireClip;
                 audioSource.pitch = Random.Range(0.8f, 1.1f);
                 audioSource.Play();
@@ -150,6 +159,16 @@ public class Ship : MonoBehaviour
 
             cooldown = 5;
         }
+    }
+
+    void CalculateFalloff()
+    {
+        float distance = Vector3.Distance(FleetManager.player.position, transform.position);
+
+        float distanceVal = (distance / maxDistance);
+
+        audioSource.volume = 0.3f * falloff.Evaluate(distanceVal);
+
     }
 
 
@@ -180,7 +199,7 @@ public class Ship : MonoBehaviour
                 }
                 foreach (Ship s in myFleet.targetFleets[i].ships)
                 {
-                    if (Vector3.Distance(transform.position, s.transform.position) < distance)
+                    if (s != null && Vector3.Distance(transform.position, s.transform.position) < distance)
                     {
                         angle = Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized);
                         if (Mathf.Abs(angle) > 0.3f)
