@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using System.Linq;
+using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -12,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public float playSpaceRadius;
     public GameObject turnAroundWarning;
+    public GameObject gameOverWarning;
 
     public Volume volume;
     ColorAdjustments colorAdjustments;
@@ -38,6 +41,7 @@ public class GameManager : MonoBehaviour
         {
             activeColours.Add(color, false);
         }
+        gameOverWarning.SetActive(false);
     }
 
     public void SetColourAvailable(Color color)
@@ -104,6 +108,22 @@ public class GameManager : MonoBehaviour
         }
         colour = Color.clear;
         return false;
+    }
+
+    public void GameOver()
+    {
+        player.GetComponent<PlayerSetShipTargetLocation>().controller.enabled = false;
+        gameOverWarning.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     public void Quit()

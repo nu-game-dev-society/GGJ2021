@@ -76,6 +76,12 @@ public class Ship : MonoBehaviour
         SetAnimTrigger("ShipSink");
         Debug.Log("Died: " + gameObject, gameObject);
         LeaveFleet();
+
+        if (this == GameManager.instance.player.GetComponent<Ship>())
+        {
+            GameManager.instance.GameOver();
+        }
+
         onDie.Invoke();
     }
 
