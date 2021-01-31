@@ -41,7 +41,7 @@ public class Waves : MonoBehaviour
 
     void Update()
     {
-        transform.position = playerMain.position;
+        //transform.position = playerMain.position;
 
         if (baseHeight == null)
             baseHeight = mesh.vertices;
