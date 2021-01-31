@@ -94,6 +94,8 @@ public class Fleet : MonoBehaviour
             Debug.Log($"REPLACING ship at index {index}");
             ships[index] = ship;
         }
+
+        ship.colour.setShipColour(ships[0].colour.getShipColour());
     }
 
     public void AddTargetFleet(Fleet fleet)

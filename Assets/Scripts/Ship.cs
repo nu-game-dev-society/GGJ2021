@@ -11,6 +11,7 @@ public class Ship : MonoBehaviour
     public Vector3 position;
     [Tooltip("Fine if null")]
     public Fleet myFleet;
+    public ShipColour colour;
     public Animator animator;
     [HideInInspector] public ShipController controller;
 
@@ -188,6 +189,7 @@ public class Ship : MonoBehaviour
     {
         controller = GetComponent<ShipController>();
         CreateFleet();
+        colour = GetComponentInChildren<ShipColour>();
     }
 
     // Update is called once per frame
