@@ -19,6 +19,6 @@ public class Stats : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        text.text = "Yer Armarda: " + playerFleet.ships.Count.ToString("D2");
+        text.text = "Yer Armarda: " + playerFleet.liveShipsCount.ToString("D2");
     }
 }
