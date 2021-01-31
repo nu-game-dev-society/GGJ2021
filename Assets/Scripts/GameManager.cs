@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
         gameOverWarning.SetActive(false);
     }
 
+    public void SetColourAvailable(Color color)
+    {
+        activeColours[color] = false;
+    }
+
     public void Update()
     {
         float playerDistance = Vector3.Distance(Vector3.zero, player.transform.position);

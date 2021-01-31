@@ -14,6 +14,9 @@ public class ShipSpawner : MonoBehaviour
     private GameObject shipPrefab;
 
     [SerializeField]
+    private GameObject rowBoatPrefab;
+
+    [SerializeField]
     private float shipCheckSize = 4.5f;
 
     [SerializeField]
@@ -33,7 +36,7 @@ public class ShipSpawner : MonoBehaviour
 
     void SpawnShip()
     {
-        if (shipCount >= maxShipCount)
+        if (GameManager.instance.activeFleets.Count >= maxShipCount)
         {
             return;
         }
@@ -54,7 +57,9 @@ public class ShipSpawner : MonoBehaviour
             return;
         }
 
-        GameObject ship = GameObject.Instantiate(shipPrefab);
+        float r = Random.Range(0, 100);
+        
+        GameObject ship = GameObject.Instantiate(r < 30 ? rowBoatPrefab : shipPrefab);
         ship.transform.position = targetPos;
 
         shipCount++;
