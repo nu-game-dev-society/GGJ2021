@@ -7,8 +7,8 @@ using UnityEngine.AI;
 public class AIShipController : MonoBehaviour
 {
     float walkRadius = 100f;
-    ShipController shipController;
-    Ship ship;
+    protected ShipController shipController;
+    protected Ship ship;
     float nextCheckTargetTime;
 
     // Start is called before the first frame update
@@ -16,7 +16,7 @@ public class AIShipController : MonoBehaviour
     {
         ship = GetComponent<Ship>();
         shipController = GetComponent<ShipController>();
-        if(shipController.target == null)
+        if (shipController.target == null)
         {
             GameObject targ = new GameObject("AIShipTarget");
             targ.transform.parent = (GameManager.instance.transform);
@@ -27,7 +27,7 @@ public class AIShipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time > nextCheckTargetTime)
+        if (Time.time > nextCheckTargetTime)
         {
             Debug.Log("Updating target");
             nextCheckTargetTime = Time.time + 5f;
@@ -36,21 +36,21 @@ public class AIShipController : MonoBehaviour
         }
     }
 
-    public void HeadAwayOrTowardsNearestFleet(Fleet fleet)
+    public virtual void HeadAwayOrTowardsNearestFleet(Fleet theirFleet)
     {
-        if (!fleet)
+        if (!theirFleet)
             return;
 
         if (ship.myFleet == null)
             return;
 
-        if (fleet.ships.Count <= ship.myFleet.ships.Count)
+        if (theirFleet.ships.Count <= ship.myFleet.ships.Count)
         {
-            shipController.target.position = fleet.detector.GetRandomPointOnDetectionCircumference();
+            shipController.target.position = theirFleet.detector.GetRandomPointOnDetectionCircumference();
         }
         else
         {
-            shipController.target.position = transform.position + (3 * (fleet.center - transform.position).normalized);
+            shipController.target.position = transform.position - (3 * (theirFleet.center - transform.position).normalized);
         }
     }
 

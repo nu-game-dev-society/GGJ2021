@@ -28,7 +28,8 @@ public class Fleet : MonoBehaviour
 
     private void Update()
     {
-        center = detector.transform.position;
+        if (detector != null)
+            center = detector.transform.position;
     }
 
     public void RemoveShip(Ship ship)
@@ -81,12 +82,12 @@ public class Fleet : MonoBehaviour
 
         if (index >= ships.Count)
         {
-            Debug.Log($"ADDING ship at index {index}");
+            //Debug.Log($"ADDING ship at index {index}");
             ships.Add(ship);
         }
         else
         {
-            Debug.Log($"REPLACING ship at index {index}");
+            //Debug.Log($"REPLACING ship at index {index}");
             ships[index] = ship;
         }
     }

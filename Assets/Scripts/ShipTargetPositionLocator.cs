@@ -20,7 +20,7 @@ public static class ShipTargetPositionLocator
         int row = rowAndPos.Item1;
         int posInRow = rowAndPos.Item2;
 
-        Debug.Log($"Ship #{index} is in row {row} at position {posInRow}");
+        //Debug.Log($"Ship #{index} is in row {row} at position {posInRow}");
 
         return GetShipTargetPosition(row, posInRow);
     }

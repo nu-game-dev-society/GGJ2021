@@ -72,7 +72,7 @@ public class DetectionSystem : MonoBehaviour
 
         //float lastRowWidth = Vector3.Distance(leftMost, rightMost);
         trigger.radius = ShipTargetPositionLocator.GAPSIZE * (lastRow+1) * 0.5f;
-        Debug.Log($"Detection Sphere radius is now: {trigger.radius}");
+        //Debug.Log($"Detection Sphere radius is now: {trigger.radius}");
 
     
     }

@@ -71,6 +71,7 @@ public class Ship : MonoBehaviour
     public void Die()
     {
         SetAnimTrigger("ShipSink");
+        Debug.Log("Died: " + gameObject, gameObject);
         LeaveFleet();
         onDie.Invoke();
     }
@@ -214,12 +215,12 @@ public class Ship : MonoBehaviour
                     if (s != null && Vector3.Distance(transform.position, s.transform.position) < distance)
                     {
                         angle = Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized);
-                        if (Mathf.Abs(angle) > 0.3f)
+                        if (Mathf.Abs(angle) > 0.7f)
                             target = s;
                     }
                 }
             }
-            if (target != null && Mathf.Abs(angle) > 0.3f)
+            if (target != null)
                 Attack(target, angle < 0);
         }
         if (cooldown < -8)
