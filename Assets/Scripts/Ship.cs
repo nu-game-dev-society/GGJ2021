@@ -212,23 +212,20 @@ public class Ship : MonoBehaviour
                         continue;
                     }
 
-                    if (myFleet.targetFleets.Count > i)
+                    for (int j = myFleet.targetFleets[i].ships.Count > 1 ? 1 : 0; j < myFleet.targetFleets[i].ships.Count; j++)
                     {
-                        angle = Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized);
-                        for (int j = myFleet.targetFleets[i].ships.Count > 1 ? 1 : 0; j < myFleet.targetFleets[i].ships.Count; j++)
+                        Ship s = myFleet.targetFleets[i].ships[j];
+                        if (s != null && Vector3.Distance(transform.position, s.transform.position) < distance)
                         {
-                            Ship s = myFleet.targetFleets[i].ships[j];
-                            if (s != null && Vector3.Distance(transform.position, s.transform.position) < distance)
-                            {
-                                angle = Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized);
-								if (Mathf.Abs(angle) > 0.7f)
-									target = s;
-                            }
+                            angle = Vector3.Dot(transform.right, (s.transform.position - transform.position).normalized);
+                            if (Mathf.Abs(angle) > 0.7f)
+                                target = s;
                         }
                     }
+
                 }
-				if (target != null)
-					Attack(target, angle < 0);
+                if (target != null)
+                    Attack(target, angle < 0);
             }
         }
         if (cooldown < -8)
