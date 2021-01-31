@@ -15,9 +15,15 @@ public class ShipColour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shipColour = Color.HSVToRGB(Random.Range(0f, 1f), 1f, 0.6f);
-        crewMates = GetComponentsInChildren<CrewMate>();
+        // try to get an unused colour, otherwise just randomise it
+        // NOTE: just need to make sure we set enough colours that it never needs to randomise
+        shipColour = Color.clear;
+        if (GameManager.instance.TryGetUnusedColour(out shipColour) == false)
+        {
+            shipColour = Color.HSVToRGB(Random.Range(0f, 1f), 1f, 0.6f);
+        }
 
+        crewMates = GetComponentsInChildren<CrewMate>();
         UpdateColours();
     }
 

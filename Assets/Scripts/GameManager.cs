@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-
+using System.Linq;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     public Volume volume;
     ColorAdjustments colorAdjustments;
+
+    [SerializeField] List<Color> possibleColours = new List<Color>();
+    Dictionary<Color, bool> activeColours = new Dictionary<Color, bool>();
 
     // Start is called before the first frame update
     void Awake()
@@ -29,6 +32,11 @@ public class GameManager : MonoBehaviour
         if (volume.profile.TryGet<ColorAdjustments>(out tmp))
         {
             colorAdjustments = tmp;
+        }
+
+        foreach(Color color in possibleColours)
+        {
+            activeColours.Add(color, false);
         }
     }
 
@@ -81,4 +89,15 @@ public class GameManager : MonoBehaviour
             colorAdjustments.saturation.value = 0f;
     }
 
+    public bool TryGetUnusedColour(out Color colour)
+    {
+        if(activeColours.Any(c => !c.Value))
+        {
+            colour = activeColours.First(c => !c.Value).Key;
+            activeColours[colour] = true;
+            return true;
+        }
+        colour = Color.clear;
+        return false;
+    }
 }
