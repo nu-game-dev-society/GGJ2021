@@ -76,11 +76,6 @@ public class Fleet : MonoBehaviour
         return index;
     }
 
-    private void CalculateDetection()
-    {
-
-    }
-
     void AddShip(int index, Ship ship)
     {
 

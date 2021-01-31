@@ -100,12 +100,16 @@ public class Ship : MonoBehaviour
     {
         if (myFleet == null)
         {
-            myFleet = gameObject.AddComponent<Fleet>();
+            Fleet f = GetComponent<Fleet>();
+            myFleet = f == null ? gameObject.AddComponent<Fleet>() : f;
             GameManager.instance.activeFleets.Add(myFleet);
             Debug.Log("Added new fleet");
         }
         if (!myFleet.ships.Contains(this))
+        {
             myFleet.ships.Add(this);
+            myFleet.liveShipsCount++;
+        }
     }
     public void LeaveFleet()
     {
@@ -139,7 +143,7 @@ public class Ship : MonoBehaviour
 
     void Attack(Ship target, bool leftFire)
     {
-        if (cooldown <= 0)
+        if (cooldown <= 0 && false)
         {
             Debug.Log(gameObject + " Attacked " + target.gameObject, target.gameObject);
             // Do damage to other ship
