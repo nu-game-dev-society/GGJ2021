@@ -170,7 +170,7 @@ MonoBehaviour:
   onDie:
     m_PersistentCalls:
       m_Calls: []
-  audioSorce: {fileID: 5946484103503651976}
+  audioSource: {fileID: 5946484103503651976}
   fireClip: {fileID: 8300000, guid: e3a024acbda980743ba4bacac0ff07fd, type: 3}
   hitClip: {fileID: 8300000, guid: 39f585490a4ee534e93f2c5ccfa71585, type: 3}
   toJoinEditorTest: {fileID: 0}

@@ -21,7 +21,7 @@ public class Ship : MonoBehaviour
     private float cooldown;
     public UnityEvent onDie;
 
-    public AudioSource audioSorce;
+    public AudioSource audioSource;
     public AudioClip fireClip;
     public AudioClip hitClip;
 
@@ -35,10 +35,11 @@ public class Ship : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (audioSorce.clip != hitClip || !audioSorce.isPlaying)
+        if (audioSource.clip != hitClip || !audioSource.isPlaying)
         {
-            audioSorce.clip = hitClip;
-            audioSorce.Play();
+            audioSource.clip = hitClip;
+            audioSource.pitch = Random.Range(0.8f, 1.1f);
+            audioSource.Play();
         }
 
         health -= damage;
@@ -48,10 +49,11 @@ public class Ship : MonoBehaviour
 
     public void TakeDamage(float damage, Ship damageSource)
     {
-        if (audioSorce.clip != hitClip || !audioSorce.isPlaying)
+        if (audioSource.clip != hitClip || !audioSource.isPlaying)
         {
-            audioSorce.clip = hitClip;
-            audioSorce.Play();
+            audioSource.clip = hitClip;
+            audioSource.pitch = Random.Range(0.8f, 1.1f);
+            audioSource.Play();
         }
 
         health -= damage;
@@ -139,10 +141,11 @@ public class Ship : MonoBehaviour
                 animator.SetTrigger("RightFire");
             }
 
-            if (audioSorce.clip != fireClip || !audioSorce.isPlaying)
+            if (audioSource.clip != fireClip || !audioSource.isPlaying)
             {
-                audioSorce.clip = fireClip;
-                audioSorce.Play();
+                audioSource.clip = fireClip;
+                audioSource.pitch = Random.Range(0.8f, 1.1f);
+                audioSource.Play();
             }
 
             cooldown = 5;
