@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FleetManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-
-    public static List<Fleet> activeFleets;
-    public static Transform player;
-    public Transform playerTransform;
+    public static GameManager instance;
+    [HideInInspector]public List<Fleet> activeFleets;
+    public Transform player;
 
     // Start is called before the first frame update
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+
         activeFleets = new List<Fleet>(); 
         activeFleets.AddRange(FindObjectsOfType<Fleet>());
-
-
-        player = playerTransform;
     }
 
 

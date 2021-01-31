@@ -7,24 +7,26 @@ using UnityEngine.AI;
 public class AIShipController : MonoBehaviour
 {
     float walkRadius = 100f;
-    ShipController ShipController;
+    ShipController shipController;
 
     // Start is called before the first frame update
     void Start()
     {
-        ShipController = GetComponent<ShipController>();
-        if(ShipController.target == null)
+        shipController = GetComponent<ShipController>();
+        if(shipController.target == null)
         {
-            ShipController.target = Instantiate(new GameObject()).transform;
+            GameObject targ = new GameObject("AIShipTarget");
+            targ.transform.parent = (GameManager.instance.transform);
+            shipController.target = targ.transform;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(ShipController.agent.remainingDistance < 5f)
+        if(shipController.agent.remainingDistance < 5f)
         {
-            ShipController.target.position = GetRandomPointInNavMesh();
+            shipController.target.position = GetRandomPointInNavMesh();
         }
     }
 

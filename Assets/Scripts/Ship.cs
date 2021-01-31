@@ -96,7 +96,7 @@ public class Ship : MonoBehaviour
         if (myFleet == null)
         {
             myFleet = gameObject.AddComponent<Fleet>();
-            FleetManager.activeFleets.Add(myFleet);
+            GameManager.instance.activeFleets.Add(myFleet);
         }
         if (!myFleet.ships.Contains(this))
             myFleet.ships.Add(this);
@@ -106,7 +106,7 @@ public class Ship : MonoBehaviour
         myFleet.RemoveShip(this);
         if (myFleet.liveShipsCount <= 0)
         {
-            FleetManager.activeFleets.Remove(myFleet);
+            GameManager.instance.activeFleets.Remove(myFleet);
             Destroy(myFleet);
         }
     }
@@ -163,7 +163,7 @@ public class Ship : MonoBehaviour
 
     void CalculateFalloff()
     {
-        float distance = Vector3.Distance(FleetManager.player.position, transform.position);
+        float distance = Vector3.Distance(GameManager.instance.player.position, transform.position);
 
         float distanceVal = (distance / maxDistance);
 
