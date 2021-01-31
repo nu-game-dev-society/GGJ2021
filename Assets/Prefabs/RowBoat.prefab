@@ -9893,6 +9893,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   maxDistance: 500
+  isPlayer: 0
+  isRowBoat: 1
   toJoinEditorTest: {fileID: 0}
 --- !u!114 &810874031287805727
 MonoBehaviour:
@@ -9913,6 +9915,9 @@ MonoBehaviour:
   detector: {fileID: 0}
   targetFleets: []
   totalHealth: 0
+  fleetDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
   addNumberOfShipsTest: 0
   AIPrefab: {fileID: 0}
 --- !u!114 &9081009238077125581

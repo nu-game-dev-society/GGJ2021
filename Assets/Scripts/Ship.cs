@@ -30,6 +30,9 @@ public class Ship : MonoBehaviour
     public AnimationCurve falloff;
     public float maxDistance = 500f;
 
+    public bool isPlayer;
+    public bool isRowBoat; 
+
     public void TakeDamage(float damage)
     {
         if (damage > 0)
@@ -88,13 +91,21 @@ public class Ship : MonoBehaviour
     public void Die(Fleet newFleet)
     {
         Die();
-        myFleet = newFleet;
 
-        AIShipController aiShip = GetComponent<AIShipController>();
-        if (aiShip)
-            aiShip.enabled = false;
+        if (isRowBoat && newFleet.ships[0].isPlayer)
+        {
+            myFleet = newFleet;
 
-        StartCoroutine(RespawnAtTime(1.25f));
+            AIShipController aiShip = GetComponent<AIShipController>();
+            if (aiShip)
+                aiShip.enabled = false;
+
+            StartCoroutine(RespawnAtTime(1.25f));
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     void CreateFleet()
     {

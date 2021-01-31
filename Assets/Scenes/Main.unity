@@ -2932,6 +2932,11 @@ PrefabInstance:
       propertyPath: waveMesh
       value: 
       objectReference: {fileID: 927778992}
+    - target: {fileID: 2863697987339022666, guid: 69ab96e2f6983184fb67249140bfe926,
+        type: 3}
+      propertyPath: isPlayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69ab96e2f6983184fb67249140bfe926, type: 3}
 --- !u!222 &7118738761472704372
