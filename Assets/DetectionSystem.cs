@@ -73,8 +73,10 @@ public class DetectionSystem : MonoBehaviour
         //float lastRowWidth = Vector3.Distance(leftMost, rightMost);
         trigger.radius = ShipTargetPositionLocator.GAPSIZE * (lastRow+1) * 0.5f;
         Debug.Log($"Detection Sphere radius is now: {trigger.radius}");
-    }
 
+    
+    }
+   
     /// <summary>
     /// Gets a random point on the circumference of this fleet's detection circle
     /// </summary>
@@ -84,9 +86,9 @@ public class DetectionSystem : MonoBehaviour
         Vector2 randomPointOnUnitCircle = (UnityEngine.Random.insideUnitCircle.normalized * trigger.radius);
         return new Vector3()
         {
-            x = trigger.center.x + randomPointOnUnitCircle.x,
-            y = trigger.center.y + 0,
-            z = trigger.center.z + randomPointOnUnitCircle.y,
+            x = transform.position.x + randomPointOnUnitCircle.x,
+            y = transform.position.y + 0,
+            z = transform.position.z + randomPointOnUnitCircle.y,
         };
     }
 }

@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
             instance = this;
 
         activeFleets = new List<Fleet>(); 
-        activeFleets.AddRange(FindObjectsOfType<Fleet>());
+        activeFleets.AddRange(FindObjectsOfType<Fleet>()); 
     }
 
     public Fleet GetNearestFleetToPosition(Vector3 pos, Fleet shipFleet)

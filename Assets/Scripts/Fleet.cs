@@ -10,7 +10,7 @@ public class Fleet : MonoBehaviour
     public fleetColour colour;
     public List<Ship> ships; //maybe hashset optimise
     public Vector3 center;
-    DetectionSystem detector;
+    [HideInInspector] public DetectionSystem detector;
     public List<Fleet> targetFleets;
 
     private void Awake()
