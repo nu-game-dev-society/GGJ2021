@@ -164,8 +164,9 @@ MonoBehaviour:
   myFleet: {fileID: 2863697987339022667}
   animator: {fileID: 2863697988890772736}
   controller: {fileID: 2863697987102195175}
-  leftCannons: {fileID: 2603063817710654234}
-  rightCannons: {fileID: 7809029432461110076}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
   toJoinEditorTest: {fileID: 0}
 --- !u!114 &2863697987339022667
 MonoBehaviour:
@@ -371,6 +372,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.000015258789
       objectReference: {fileID: 0}
+    - target: {fileID: 2731019336671002266, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3194293494639421584, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -391,6 +397,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6167063955164700924, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217389010578319030, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8035375435467645232, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
         type: 3}
       propertyPath: m_Name
@@ -398,12 +414,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc17bf2c9a14854439b0bdc2828ad6c6, type: 3}
---- !u!198 &7809029432461110076 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7217389010578319030, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 609797900955684234}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2863697988365446123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -533,6 +543,11 @@ PrefabInstance:
     - target: {fileID: 2757460512046092509, guid: 698337bc6a7dc484a8ddc2a10118e454,
         type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3876833162165318280, guid: 698337bc6a7dc484a8ddc2a10118e454,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3876833162165318280, guid: 698337bc6a7dc484a8ddc2a10118e454,
@@ -702,6 +717,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2731019336671002266, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3194293494639421584, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -717,6 +737,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6167063955164700924, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217389010578319030, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8035375435467645232, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
         type: 3}
       propertyPath: m_Name
@@ -724,9 +754,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc17bf2c9a14854439b0bdc2828ad6c6, type: 3}
---- !u!198 &2603063817710654234 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7217389010578319030, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 4627063585972221356}
-  m_PrefabAsset: {fileID: 0}
