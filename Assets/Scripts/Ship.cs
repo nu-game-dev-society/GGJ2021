@@ -45,7 +45,7 @@ public class Ship : MonoBehaviour
 
     public void Die()
     {
-        animator.SetTrigger("SinkShip");
+        animator.SetTrigger("ShipSink");
         LeaveFleet();
         onDie.Invoke();
     }
