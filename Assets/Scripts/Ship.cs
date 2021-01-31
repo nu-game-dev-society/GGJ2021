@@ -37,6 +37,7 @@ public class Ship : MonoBehaviour
         cooldown = 5;
     }
 
+
     public void TakeDamage(float damage)
     {
         if (audioSource.clip != hitClip || !audioSource.isPlaying)

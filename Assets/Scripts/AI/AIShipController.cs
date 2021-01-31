@@ -44,13 +44,15 @@ public class AIShipController : MonoBehaviour
         if (ship.myFleet == null)
             return;
 
-        if (theirFleet.ships.Count <= ship.myFleet.ships.Count)
+        if (theirFleet.liveShipsCount <= ship.myFleet.liveShipsCount && ship.myFleet.totalHealth >= theirFleet.totalHealth)
         {
             shipController.target.position = theirFleet.detector.GetRandomPointOnDetectionCircumference();
         }
         else
         {
-            shipController.target.position = transform.position - (3 * (theirFleet.center - transform.position).normalized);
+            Debug.Log("run");
+            Vector3 direction = transform.position - theirFleet.center;
+            shipController.target.position = transform.position + direction;
         }
     }
 
