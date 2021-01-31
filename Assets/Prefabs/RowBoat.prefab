@@ -9852,6 +9852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 15
+  maxHealth: 15
   strength: 0
   position: {x: 0, y: 0, z: 0}
   myFleet: {fileID: 0}
