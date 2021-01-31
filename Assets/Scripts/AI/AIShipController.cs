@@ -8,10 +8,13 @@ public class AIShipController : MonoBehaviour
 {
     float walkRadius = 100f;
     ShipController shipController;
+    Ship ship;
+    float nextCheckTargetTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        ship = GetComponent<Ship>();
         shipController = GetComponent<ShipController>();
         if(shipController.target == null)
         {
@@ -24,10 +27,36 @@ public class AIShipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(shipController.agent.remainingDistance < 5f)
+        if(Time.time > nextCheckTargetTime)
         {
-            shipController.target.position = GetRandomPointInNavMesh();
+            Debug.Log("Updating target");
+            nextCheckTargetTime = Time.time + 5f;
+            HeadAwayOrTowardsNearestFleet(GetNearestFleet());
+            //shipController.target.position = GetRandomPointInNavMesh();
         }
+    }
+
+    public void HeadAwayOrTowardsNearestFleet(Fleet fleet)
+    {
+        if (!fleet)
+            return;
+
+        if (ship.myFleet == null)
+            return;
+
+        if (fleet.ships.Count <= ship.myFleet.ships.Count)
+        {
+            shipController.target.position = fleet.center + (3 * (fleet.center - transform.position).normalized);
+        }
+        else
+        {
+            shipController.target.position = transform.position + (3 * (fleet.center - transform.position).normalized);
+        }
+    }
+
+    public Fleet GetNearestFleet()
+    {
+        return GameManager.instance.GetNearestFleetToPosition(ship.myFleet.center);
     }
 
     Vector3 GetRandomPointInNavMesh()

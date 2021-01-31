@@ -97,6 +97,7 @@ public class Ship : MonoBehaviour
         {
             myFleet = gameObject.AddComponent<Fleet>();
             GameManager.instance.activeFleets.Add(myFleet);
+            Debug.Log("Added new fleet");
         }
         if (!myFleet.ships.Contains(this))
             myFleet.ships.Add(this);

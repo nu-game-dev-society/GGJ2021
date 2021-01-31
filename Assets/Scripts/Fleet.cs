@@ -26,6 +26,11 @@ public class Fleet : MonoBehaviour
         this.colour = colour;
     }
 
+    private void Update()
+    {
+        center = detector.transform.position;
+    }
+
     public void RemoveShip(Ship ship)
     {
         //ships.Remove(ship); 
@@ -66,6 +71,8 @@ public class Fleet : MonoBehaviour
         AddShip(index, ship);
         liveShipsCount++;
         detector.CalculateRadius();
+
+        center = detector.transform.position;
         return index;
     }
 
