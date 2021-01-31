@@ -9912,6 +9912,7 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   detector: {fileID: 0}
   targetFleets: []
+  totalHealth: 0
   addNumberOfShipsTest: 0
   AIPrefab: {fileID: 0}
 --- !u!114 &9081009238077125581
@@ -10114,7 +10115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6496969198778451651}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.158}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1053156790397437150}
