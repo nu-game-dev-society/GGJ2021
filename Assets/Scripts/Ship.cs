@@ -138,7 +138,7 @@ public class Ship : MonoBehaviour
     {
         cooldown -= Time.deltaTime;
 
-        
+
         if (cooldown < 0 && myFleet.targetFleets.Count > 0)
         {
             Ship target = null;
@@ -166,4 +166,16 @@ public class Ship : MonoBehaviour
         yield return new WaitForSeconds(timeToJoin);
         Respawn();
     }
+
+#if UNITY_EDITOR
+    public int addNumberOfShipsTest = 1;
+    [ContextMenu("TestAddShips X")]
+    public void TestAddShips()
+    {
+        for(int i = 0; i<addNumberOfShipsTest; i++)
+        {
+
+        }
+    }
+#endif
 }
