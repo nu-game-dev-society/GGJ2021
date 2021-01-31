@@ -137,7 +137,7 @@ public class Fleet : MonoBehaviour
 
             ship.transform.position = transform.TransformPoint(newPos);
 
-            ship.animator.SetTrigger("ShipSpawn");
+            ship.SetAnimTrigger("ShipSpawn");
             yield return new WaitForSeconds(0.5f);
         }
     }

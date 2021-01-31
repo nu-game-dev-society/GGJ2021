@@ -9,7 +9,6 @@ public class Ship : MonoBehaviour
 
     public float strength;
     public Vector3 position;
-    public bool attacking;
     [Tooltip("Fine if null")]
     public Fleet myFleet;
     public Animator animator;
@@ -71,7 +70,7 @@ public class Ship : MonoBehaviour
 
     public void Die()
     {
-        animator.SetTrigger("ShipSink");
+        SetAnimTrigger("ShipSink");
         LeaveFleet();
         onDie.Invoke();
     }
@@ -137,26 +136,28 @@ public class Ship : MonoBehaviour
 
         transform.position = myFleet.transform.TransformPoint(newPos);
 
-        animator.SetTrigger("ShipSpawn");
+        SetAnimTrigger("ShipSpawn");
         health = 100;
     }
 
     void Attack(Ship target, bool leftFire)
     {
-        if (cooldown <= 0 && false)
+        if (cooldown <= 0)
         {
             Debug.Log(gameObject + " Attacked " + target.gameObject, target.gameObject);
             // Do damage to other ship
             target.TakeDamage(strength, this);
             if (leftFire)
             {
-                leftCannonParticles.Play();
-                animator.SetTrigger("LeftFire");
+                if (leftCannonParticles)
+                    leftCannonParticles.Play();
+                SetAnimTrigger("LeftFire");
             }
             else
             {
-                rightCannonParticles.Play();
-                animator.SetTrigger("RightFire");
+                if (rightCannonParticles)
+                    rightCannonParticles.Play();
+                SetAnimTrigger("RightFire");
             }
 
             if (audioSource.clip != fireClip || !audioSource.isPlaying)
@@ -231,6 +232,12 @@ public class Ship : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToJoin);
         Respawn();
+    }
+    public void SetAnimTrigger(string trigger)
+    {
+        if (animator == null)
+            return;
+        animator.SetTrigger(trigger);
     }
 
 }
