@@ -67,4 +67,6 @@ public class AIShipController : MonoBehaviour
         NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, walkRadius, 1);
         return hit.position;
     }
+
+    static Vector3 GetRandomPointOnCircumference(float radius) => Random.insideUnitCircle.normalized * radius;
 }
