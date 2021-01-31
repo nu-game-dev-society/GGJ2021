@@ -2941,6 +2941,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1334529}
+    - target: {fileID: 2863697987102195175, guid: 69ab96e2f6983184fb67249140bfe926,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2863697987102195192, guid: 69ab96e2f6983184fb67249140bfe926,
         type: 3}
       propertyPath: waveMesh

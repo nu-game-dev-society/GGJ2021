@@ -31,7 +31,7 @@ public class Ship : MonoBehaviour
     public float maxDistance = 500f;
 
     public bool isPlayer;
-    public bool isRowBoat; 
+    public bool isRowBoat;
 
     public void TakeDamage(float damage)
     {
@@ -172,7 +172,7 @@ public class Ship : MonoBehaviour
 
             if (cooldown <= 0)
             {
-                Debug.Log(gameObject + " Attacked " + target.gameObject, target.gameObject);
+                Debug.Log(gameObject.name + " Attacked " + target.gameObject.name, target.gameObject);
                 // Do damage to other ship
                 target.TakeDamage(strength, this);
                 if (leftFire)

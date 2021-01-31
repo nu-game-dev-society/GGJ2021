@@ -42,14 +42,14 @@ public class ShipSpawner : MonoBehaviour
         }
 
         Vector3 targetPos = Vector3.zero;
-        
+
         int x = Mathf.RoundToInt(Random.Range(boxCollider.bounds.min.x, boxCollider.bounds.max.x));
         int z = Mathf.RoundToInt(Random.Range(boxCollider.bounds.min.z, boxCollider.bounds.max.z));
 
         targetPos = new Vector3(x, transform.position.y, z);
 
         List<Collider> collisions = Physics.OverlapSphere(targetPos, shipCheckSize).ToList();
-        
+
         bool isOverlappingShip = collisions.Exists(collider => collider is CapsuleCollider
                                                 && collider.gameObject.TryGetComponent<ShipController>(out _));
         if (isOverlappingShip)
@@ -58,8 +58,9 @@ public class ShipSpawner : MonoBehaviour
         }
 
         float r = Random.Range(0, 100);
-        
+
         GameObject ship = GameObject.Instantiate(r < 30 ? rowBoatPrefab : shipPrefab);
+        ship.name = StaticAlphabetWords.GetRandomWord() + " " + StaticAlphabetWords.GetRandomWord();
         ship.transform.position = targetPos;
 
         shipCount++;

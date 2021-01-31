@@ -101,6 +101,10 @@ public class Fleet : MonoBehaviour
             index = ships.Count;
         }
         AddShip(index, ship);
+
+        if (ship != ships[0])
+            ship.controller.maxSpeed = ships[0].controller.maxSpeed * 1.2f;
+
         liveShipsCount++;
         detector.CalculateRadius();
 
