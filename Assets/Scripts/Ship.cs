@@ -32,13 +32,16 @@ public class Ship : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (audioSource.clip != hitClip || !audioSource.isPlaying)
+        if (damage > 0)
         {
-            CalculateFalloff();
-            audioSource.clip = hitClip;
-            audioSource.pitch = Random.Range(0.8f, 1.1f);
-            audioSource.Play();
-            hitParticles.Play();
+            if (audioSource.clip != hitClip || !audioSource.isPlaying)
+            {
+                CalculateFalloff();
+                audioSource.clip = hitClip;
+                audioSource.pitch = Random.Range(0.8f, 1.1f);
+                audioSource.Play();
+                hitParticles.Play();
+            }
         }
 
         health -= damage;
@@ -48,13 +51,16 @@ public class Ship : MonoBehaviour
 
     public void TakeDamage(float damage, Ship damageSource)
     {
-        if (audioSource.clip != hitClip || !audioSource.isPlaying)
+        if (damage > 0)
         {
-            CalculateFalloff();
-            audioSource.clip = hitClip;
-            audioSource.pitch = Random.Range(0.8f, 1.1f);
-            audioSource.Play();
-            hitParticles.Play();
+            if (audioSource.clip != hitClip || !audioSource.isPlaying)
+            {
+                CalculateFalloff();
+                audioSource.clip = hitClip;
+                audioSource.pitch = Random.Range(0.8f, 1.1f);
+                audioSource.Play();
+                hitParticles.Play();
+            }
         }
 
         health -= damage;
@@ -137,33 +143,36 @@ public class Ship : MonoBehaviour
 
     void Attack(Ship target, bool leftFire)
     {
-        if (cooldown <= 0)
+        if (strength > 0)
         {
-            Debug.Log(gameObject + " Attacked " + target.gameObject, target.gameObject);
-            // Do damage to other ship
-            target.TakeDamage(strength, this);
-            if (leftFire)
+            if (cooldown <= 0)
             {
-                if (leftCannonParticles)
-                    leftCannonParticles.Play();
-                SetAnimTrigger("LeftFire");
-            }
-            else
-            {
-                if (rightCannonParticles)
-                    rightCannonParticles.Play();
-                SetAnimTrigger("RightFire");
-            }
+                Debug.Log(gameObject + " Attacked " + target.gameObject, target.gameObject);
+                // Do damage to other ship
+                target.TakeDamage(strength, this);
+                if (leftFire)
+                {
+                    if (leftCannonParticles)
+                        leftCannonParticles.Play();
+                    SetAnimTrigger("LeftFire");
+                }
+                else
+                {
+                    if (rightCannonParticles)
+                        rightCannonParticles.Play();
+                    SetAnimTrigger("RightFire");
+                }
 
-            if (audioSource.clip != fireClip || !audioSource.isPlaying)
-            {
-                CalculateFalloff();
-                audioSource.clip = fireClip;
-                audioSource.pitch = Random.Range(0.8f, 1.1f);
-                audioSource.Play();
-            }
+                if (audioSource.clip != fireClip || !audioSource.isPlaying)
+                {
+                    CalculateFalloff();
+                    audioSource.clip = fireClip;
+                    audioSource.pitch = Random.Range(0.8f, 1.1f);
+                    audioSource.Play();
+                }
 
-            cooldown = 5;
+                cooldown = 5;
+            }
         }
     }
 
