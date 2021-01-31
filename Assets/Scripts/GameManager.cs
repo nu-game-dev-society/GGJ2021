@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public float playSpaceRadius;
     public GameObject turnAroundWarning;
     public GameObject gameOverWarning;
+    bool gameOver => gameOverWarning.activeInHierarchy;
 
     public Volume volume;
     ColorAdjustments colorAdjustments;
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         float playerDistance = Vector3.Distance(Vector3.zero, player.transform.position);
 
-        if (playerDistance > playSpaceRadius)
+        if (playerDistance > playSpaceRadius && !gameOver)
         {
             turnAroundWarning.SetActive(true);
         }
@@ -114,6 +115,7 @@ public class GameManager : MonoBehaviour
     {
         player.GetComponent<PlayerSetShipTargetLocation>().controller.enabled = false;
         gameOverWarning.SetActive(true);
+        turnAroundWarning.SetActive(false);
     }
 
     public void Restart()
