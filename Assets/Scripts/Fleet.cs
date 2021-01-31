@@ -26,7 +26,7 @@ public class Fleet : MonoBehaviour
         this.colour = colour;
     }
 
-    public void removeShip(Ship ship)
+    public void RemoveShip(Ship ship)
     {
         //ships.Remove(ship); 
         int index = ships.IndexOf(ship);
@@ -71,7 +71,7 @@ public class Fleet : MonoBehaviour
 
     private void CalculateDetection()
     {
-        
+
     }
 
     void AddShip(int index, Ship ship)
@@ -104,4 +104,40 @@ public class Fleet : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
+    [Header("TESTING")]
+    public int addNumberOfShipsTest = 1;
+    public GameObject AIPrefab;
+    [ContextMenu("TestAddShips X")]
+    public void TestAddShips()
+    {
+        StartCoroutine(AddEverySecondEditor());
+    }
+    IEnumerator AddEverySecondEditor()
+    {
+        for (int i = 0; i < addNumberOfShipsTest; i++)
+        {
+            GameObject go = Instantiate(AIPrefab);
+            Destroy(go.GetComponent<AIShipController>());
+
+
+            Ship ship = go.GetComponent<Ship>();
+            ship.myFleet = this;
+            ship.LeaveFleet();
+            int index = AddShip(ship);
+
+            Vector3 newPos = ShipTargetPositionLocator.GetShipTargetPosition(index + 1);
+
+            Transform t = new GameObject().transform;
+            t.parent = transform;
+            t.localPosition = newPos;
+            ship.controller.target = t;
+
+            ship.transform.position = transform.TransformPoint(newPos);
+
+            ship.animator.SetTrigger("ShipSpawn");
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+#endif
 }

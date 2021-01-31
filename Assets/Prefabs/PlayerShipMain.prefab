@@ -164,6 +164,8 @@ MonoBehaviour:
   myFleet: {fileID: 2863697987339022667}
   animator: {fileID: 2863697988890772736}
   controller: {fileID: 2863697987102195175}
+  leftCannonParticles: {fileID: 2603063817710654234}
+  rightCannonParticles: {fileID: 7809029432461110076}
   onDie:
     m_PersistentCalls:
       m_Calls: []
@@ -185,6 +187,8 @@ MonoBehaviour:
   ships: []
   center: {x: 0, y: 0, z: 0}
   targetFleets: []
+  addNumberOfShipsTest: 0
+  AIPrefab: {fileID: 0}
 --- !u!1 &2863697988890772751
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +418,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc17bf2c9a14854439b0bdc2828ad6c6, type: 3}
+--- !u!198 &7809029432461110076 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7217389010578319030, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 609797900955684234}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2863697988365446123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -754,3 +764,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc17bf2c9a14854439b0bdc2828ad6c6, type: 3}
+--- !u!198 &2603063817710654234 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7217389010578319030, guid: fc17bf2c9a14854439b0bdc2828ad6c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4627063585972221356}
+  m_PrefabAsset: {fileID: 0}

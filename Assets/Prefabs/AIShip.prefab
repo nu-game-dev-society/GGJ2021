@@ -1,17 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4667667326549085401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094348793917431488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0df1e5cce8b5ee489922a59bcac3d7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2923414825564988196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34,7 +22,7 @@ PrefabInstance:
     - target: {fileID: 2863697987102195172, guid: 69ab96e2f6983184fb67249140bfe926,
         type: 3}
       propertyPath: m_Name
-      value: PlayerShip Variant
+      value: AIShip
       objectReference: {fileID: 0}
     - target: {fileID: 2863697987102195173, guid: 69ab96e2f6983184fb67249140bfe926,
         type: 3}
@@ -95,9 +83,3 @@ PrefabInstance:
     - {fileID: 905093937, guid: 69ab96e2f6983184fb67249140bfe926, type: 3}
     - {fileID: 488287199, guid: 69ab96e2f6983184fb67249140bfe926, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 69ab96e2f6983184fb67249140bfe926, type: 3}
---- !u!1 &1094348793917431488 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2863697987102195172, guid: 69ab96e2f6983184fb67249140bfe926,
-    type: 3}
-  m_PrefabInstance: {fileID: 2923414825564988196}
-  m_PrefabAsset: {fileID: 0}

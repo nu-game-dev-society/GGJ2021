@@ -75,10 +75,10 @@ public class Ship : MonoBehaviour
         if (!myFleet.ships.Contains(this))
             myFleet.ships.Add(this);
     }
-    void LeaveFleet()
+    public void LeaveFleet()
     {
-        myFleet.removeShip(this);
-        if (myFleet.ships.Count <= 0)
+        myFleet.RemoveShip(this);
+        if (myFleet.liveShipsCount <= 0)
         {
             FleetManager.activeFleets.Remove(myFleet);
             Destroy(myFleet);
@@ -102,6 +102,7 @@ public class Ship : MonoBehaviour
         transform.position = myFleet.transform.TransformPoint(newPos);
 
         animator.SetTrigger("ShipSpawn");
+        health = 100;
     }
 
     void Attack(Ship target, bool leftFire)
@@ -146,6 +147,11 @@ public class Ship : MonoBehaviour
             float angle = 0.0f;
             for (int i = 0; i < myFleet.targetFleets.Count; i++)
             {
+                if (myFleet.targetFleets[i] == null)
+                {
+                    myFleet.targetFleets.RemoveAt(i);
+                    continue;
+                }
                 foreach (Ship s in myFleet.targetFleets[i].ships)
                 {
                     if (Vector3.Distance(transform.position, s.transform.position) < distance)
@@ -159,6 +165,10 @@ public class Ship : MonoBehaviour
             if (target != null)
                 Attack(target, angle < 0);
         }
+        if(cooldown < -8)
+        {
+            health = Mathf.Clamp(health + (Time.deltaTime * 2), 0, 100);
+        }
     }
 
     IEnumerator RespawnAtTime(float timeToJoin)
@@ -167,15 +177,4 @@ public class Ship : MonoBehaviour
         Respawn();
     }
 
-#if UNITY_EDITOR
-    public int addNumberOfShipsTest = 1;
-    [ContextMenu("TestAddShips X")]
-    public void TestAddShips()
-    {
-        for(int i = 0; i<addNumberOfShipsTest; i++)
-        {
-
-        }
-    }
-#endif
 }
