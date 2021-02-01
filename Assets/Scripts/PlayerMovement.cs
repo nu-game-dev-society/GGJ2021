@@ -50,7 +50,7 @@ public class @PlayerMovement : IInputActionCollection, IDisposable
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PC;Mobile"",
+                    ""groups"": ""PC"",
                     ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -61,7 +61,7 @@ public class @PlayerMovement : IInputActionCollection, IDisposable
                     ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mobile;PC"",
+                    ""groups"": ""PC"",
                     ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -72,7 +72,7 @@ public class @PlayerMovement : IInputActionCollection, IDisposable
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": ""PC;Mobile"",
+                    ""groups"": ""PC"",
                     ""action"": ""MouseClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -83,7 +83,7 @@ public class @PlayerMovement : IInputActionCollection, IDisposable
                     ""path"": ""<Touchscreen>/press"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": ""Mobile;PC"",
+                    ""groups"": ""PC"",
                     ""action"": ""MouseClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -94,7 +94,7 @@ public class @PlayerMovement : IInputActionCollection, IDisposable
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": ""Press(behavior=1)"",
                     ""processors"": """",
-                    ""groups"": ""PC;Mobile"",
+                    ""groups"": ""PC"",
                     ""action"": ""MouseRelease"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -105,7 +105,7 @@ public class @PlayerMovement : IInputActionCollection, IDisposable
                     ""path"": ""<Touchscreen>/press"",
                     ""interactions"": ""Press(behavior=1)"",
                     ""processors"": """",
-                    ""groups"": ""Mobile;PC"",
+                    ""groups"": ""PC"",
                     ""action"": ""MouseRelease"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -118,17 +118,6 @@ public class @PlayerMovement : IInputActionCollection, IDisposable
             ""name"": ""PC"",
             ""bindingGroup"": ""PC"",
             ""devices"": []
-        },
-        {
-            ""name"": ""Mobile"",
-            ""bindingGroup"": ""Mobile"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Touchscreen>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
         }
     ]
 }");
@@ -238,15 +227,6 @@ public class @PlayerMovement : IInputActionCollection, IDisposable
         {
             if (m_PCSchemeIndex == -1) m_PCSchemeIndex = asset.FindControlSchemeIndex("PC");
             return asset.controlSchemes[m_PCSchemeIndex];
-        }
-    }
-    private int m_MobileSchemeIndex = -1;
-    public InputControlScheme MobileScheme
-    {
-        get
-        {
-            if (m_MobileSchemeIndex == -1) m_MobileSchemeIndex = asset.FindControlSchemeIndex("Mobile");
-            return asset.controlSchemes[m_MobileSchemeIndex];
         }
     }
     public interface IMovementActions
